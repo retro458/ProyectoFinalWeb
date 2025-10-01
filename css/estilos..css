@@ -1,0 +1,29 @@
+body {
+    background-color: #121212;
+    color: #f0f0f0;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  header {
+    background-color: #1f1f1f;
+    padding: 1rem;
+  }
+  footer {
+    background-color: #1f1f1f;
+    padding: 1rem;
+    text-align: center;
+    margin-top: 2rem;
+  }
+  .hero {
+    background: url('https://picsum.photos/1920/600?blur=3') no-repeat center center;
+    background-size: cover;
+    color: white;
+    text-shadow: 2px 2px 4px #000;
+    padding: 5rem 2rem;
+    text-align: center;
+  }
+  .nav-link {
+    color: #f0f0f0 !important;
+  }
+  .nav-link:hover {
+    color: #ff4d4d !important;
+  }
