@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Song of Kings and Knights</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a0d0d 50%, #2d1b1b 100%);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .game-hero {
+            background: url('https://via.placeholder.com/1920x600/333/666?text=Background+Epic') no-repeat center center;
+            background-size: cover;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .game-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+        }
+        
+        .game-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .game-title {
+            font-size: 4rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ffd700, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            margin-bottom: 20px;
+        }
+        
+        .game-subtitle {
+            font-size: 1.5rem;
+            color: #ccc;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+        
+        .game-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+        
+        .game-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(220, 53, 69, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .synopsis-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #e0e0e0;
+        }
+        
+        .feature-box {
+            text-align: center;
+            padding: 20px;
+            background: rgba(220, 53, 69, 0.1);
+            border-radius: 10px;
+            border: 1px solid rgba(220, 53, 69, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-5px);
+            background: rgba(220, 53, 69, 0.2);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: #dc3545;
+            margin-bottom: 15px;
+        }
+        
+        .gameplay-demo {
+            background: #000;
+            border-radius: 10px;
+            padding: 20px;
+            border: 2px solid #dc3545;
+        }
+        
+        .controls-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .controls-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .music-player {
+            background: rgba(0,0,0,0.5);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid #dc3545;
+        }
+        
+        .btn-game {
+            background: linear-gradient(45deg, #dc3545, #ff6b6b);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-game:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(220, 53, 69, 0.5);
+        }
+        
+        .floating-crystal {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(220,53,69,0.8) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+            z-index: -1;
+        }
+        
+        .crystal-1 { top: 10%; left: 5%; animation-delay: 0s; }
+        .crystal-2 { top: 60%; right: 10%; animation-delay: 2s; }
+        .crystal-3 { bottom: 20%; left: 15%; animation-delay: 4s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Elementos decorativos flotantes -->
+    <div class="floating-crystal crystal-1"></div>
+    <div class="floating-crystal crystal-2"></div>
+    <div class="floating-crystal crystal-3"></div>
+
+    <!-- Hero Section -->
+    <section class="game-hero">
+        <div class="game-hero-content">
+            <h1 class="game-title">A Song of Kings and Knights</h1>
+            <p class="game-subtitle">Una épica aventura Metroidvania en un mundo de tu creación</p>
+            <button class="btn btn-game" onclick="startGameDemo()">
+                <i class="fas fa-play me-2"></i>Iniciar Demo
+            </button>
+        </div>
+    </section>
+
+    <div class="game-container">
+        <!-- Sinopsis -->
+        <section class="game-section">
+            <h2 class="text-center mb-4"><i class="fas fa-scroll me-2"></i>La Leyenda</h2>
+            <div class="synopsis-text">
+                <p>En un reino donde la música da forma a la realidad, eres el último Guardián de las Melodías Ancestrales. 
+                Tu misión es restaurar la armonía en un mundo fracturado por el Silencio, una fuerza que corrompe todo lo que toca.</p>
+                
+                <p>Explora ruinas antiguas, descubre instrumentos mágicos y desentraña los secretos de los Reyes Olvidados. 
+                Cada acorde que recuperes te concederá nuevos poderes, permitiéndote acceder a regiones antes inalcanzables.</p>
+                
+                <p>Pero cuidado: el Silencio acecha en cada sombra, y sus seguidores harán todo lo posible por evitar 
+                que la Canción de Reyes y Caballeros vuelva a entonarse.</p>
+            </div>
+        </section>
+
+        <!-- Características -->
+        <section class="game-section">
+            <h2 class="text-center mb-5"><i class="fas fa-star me-2"></i>Características</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h4>Mundo Interconectado</h4>
+                        <p>Explora un vasto mapa no lineal lleno de secretos y caminos alternativos</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h4>Sistema Musical</h4>
+                        <p>La música es tu arma y herramienta. Descubre melodías con poderes únicos</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Combate Dinámico</h4>
+                        <p>Sistema de combate fluido que combina armas tradicionales y poderes musicales</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demo del Juego -->
+        <section class="game-section">
+            <h2 class="text-center mb-4"><i class="fas fa-gamepad me-2"></i>Demo Interactiva</h2>
+            <div class="gameplay-demo">
+                <div id="gameCanvasContainer" class="text-center">
+                    <canvas id="gameCanvas" width="800" height="450" style="max-width: 100%; background: #1a1a1a; border-radius: 5px;"></canvas>
+                </div>
+                <div class="text-center mt-3">
+                    <button class="btn btn-game me-3" onclick="startGameDemo()">
+                        <i class="fas fa-play me-2"></i>Iniciar Demo
+                    </button>
+                    <button class="btn btn-outline-light" onclick="resetGameDemo()">
+                        <i class="fas fa-redo me-2"></i>Reiniciar
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Controles -->
+        <section class="game-section">
+            <h2 class="text-center mb-4"><i class="fas fa-keyboard me-2"></i>Controles</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="controls-list">
+                        <li><strong>Flechas/WASD:</strong> Movimiento</li>
+                        <li><strong>Espacio:</strong> Saltar</li>
+                        <li><strong>Z/X:</strong> Ataque básico</li>
+                        <li><strong>C:</strong> Dash/Esquivar</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="controls-list">
+                        <li><strong>1-4:</strong> Cambiar melodías</li>
+                        <li><strong>Shift:</strong> Melodía especial</li>
+                        <li><strong>E:</strong> Interactuar</li>
+                        <li><strong>ESC:</strong> Menú pausa</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Música -->
+        <section class="game-section">
+            <h2 class="text-center mb-4"><i class="fas fa-headphones me-2"></i>Banda Sonora</h2>
+            <div class="music-player text-center">
+                <audio id="gameMusic" loop>
+                    <source src="assets/music/main-theme.mp3" type="audio/mp3">
+                    Tu navegador no soporta audio HTML5.
+                </audio>
+                <div class="mb-3">
+                    <button class="btn btn-outline-light me-2" onclick="playMusic()">
+                        <i class="fas fa-play"></i> Reproducir
+                    </button>
+                    <button class="btn btn-outline-light" onclick="pauseMusic()">
+                        <i class="fas fa-pause"></i> Pausar
+                    </button>
+                </div>
+                <p class="text-muted">"Canción de Reyes y Caballeros" - Tema principal</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Música de fondo
+        function playMusic() {
+            document.getElementById('gameMusic').play().catch(e => {
+                console.log('Reproducción automática bloqueada: haz clic en reproducir');
+            });
+        }
+        
+        function pauseMusic() {
+            document.getElementById('gameMusic').pause();
+        }
+        
+        // Auto-reproducir música (puede necesitar interacción del usuario)
+        document.addEventListener('click', function() {
+            playMusic();
+        }, { once: true });
+        
+        // Demo del juego
+        function startGameDemo() {
+            const canvas = document.getElementById('gameCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Código simple de demo
+            let player = { x: 100, y: 100, width: 32, height: 48 };
+            
+            function gameLoop() {
+                ctx.fillStyle = '#1a1a2e';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                // Dibujar jugador
+                ctx.fillStyle = '#8B4513';
+                ctx.fillRect(player.x, player.y, player.width, player.height);
+                
+                // Texto de demo
+                ctx.fillStyle = '#fff';
+                ctx.font = '20px Arial';
+                ctx.fillText('A Song of Kings and Knights - Demo', 50, 30);
+                ctx.fillText('Usa las flechas para moverte', 50, 60);
+                
+                requestAnimationFrame(gameLoop);
+            }
+            
+            // Controles
+            const keys = {};
+            window.addEventListener('keydown', e => keys[e.key] = true);
+            window.addEventListener('keyup', e => keys[e.key] = false);
+            
+            function update() {
+                if (keys['ArrowLeft'] || keys['a']) player.x -= 5;
+                if (keys['ArrowRight'] || keys['d']) player.x += 5;
+                if (keys['ArrowUp'] || keys['w']) player.y -= 5;
+                if (keys['ArrowDown'] || keys['s']) player.y += 5;
+            }
+            
+            function mainLoop() {
+                update();
+                gameLoop();
+            }
+            
+            mainLoop();
+        }
+        
+        function resetGameDemo() {
+            // Recargar la página para reiniciar
+            location.reload();
+        }
+        
+        // Iniciar automáticamente al cargar
+        window.addEventListener('load', function() {
+            console.log('🎮 A Song of Kings and Knights - Página cargada');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+.hero-noticias {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d1b1b 100%);
+    background: url('../img/627796.jpg') no-repeat center center;
+    padding: 80px 0 40px;
+}
+.news-card {
+    transition: transform 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(220, 53, 69, 0.2);
+}
+.badge-categoria {
+    background: #dc3545;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+.news-image {
+    height: 200px;
+    object-fit: cover;
+}
+.sidebar-card {
+    background: #f8f9fa;
+    border-left: 4px solid #dc3545;
+}

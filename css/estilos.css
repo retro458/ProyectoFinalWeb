@@ -14,7 +14,7 @@ body {
     margin-top: 2rem;
   }
   .hero {
-    background: url('https://picsum.photos/1920/600?blur=3') no-repeat center center;
+    background: url('../img/1082409.png') no-repeat center center;
     background-size: cover;
     color: white;
     text-shadow: 2px 2px 4px #000;
