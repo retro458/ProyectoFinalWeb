@@ -20,39 +20,57 @@
         </div>
     </nav>
 
-<!-- Sección Comunidades -->
-<section id="comunidades" class="container py-5">
-    <div class="text-center mb-5">
-        <h2>🎮 Únete a la Comunidad</h2>
-        <p class="lead">Encuentra tu tribu gaming, comparte estrategias y haz nuevos amigos</p>
-    </div>
-
-    <!-- Barra de búsqueda y filtros -->
+<!-- Sección Comunidades de Juegos -->
+<section id="comunidades-juegos" class="container py-5">
+    <!-- Header al estilo Steam -->
     <div class="row mb-4">
-        <div class="col-md-8">
-            <div class="input-group">
-                <input type="text" class="form-control bg-dark text-light" placeholder="Buscar comunidades...">
-                <button class="btn btn-danger">🔍 Buscar</button>
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="mb-0">🎮 Comunidades de Juegos</h2>
+                <div class="d-flex gap-2">
+                    <div class="input-group" style="width: 300px;">
+                        <input type="text" class="form-control bg-dark text-light border-secondary" 
+                               placeholder="Buscar comunidades...">
+                        <button class="btn btn-outline-secondary">🔍</button>
+                    </div>
+                    <select class="form-select bg-dark text-light border-secondary" style="width: 200px;">
+                        <option>Ordenar por: Actividad</option>
+                        <option>Miembros</option>
+                        <option>Recientes</option>
+                        <option>Alfabético</option>
+                    </select>
+                </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <select class="form-select bg-dark text-light">
-                <option>Todas las categorías</option>
-                <option>FPS</option>
-                <option>RPG</option>
-                <option>MMO</option>
-                <option>Indie</option>
-                <option>Estrategia</option>
-            </select>
         </div>
     </div>
 
     <!-- Grid de Comunidades -->
-    <div class="row" id="comunidadesGrid">
+    <div class="row g-4" id="comunidadesGrid">
         <!-- Las comunidades se cargarán aquí -->
     </div>
+
+    <!-- Barra de estado tipo Steam -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="steam-status-bar bg-dark p-3 rounded">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <span class="text-muted">Comunidades activas:</span>
+                        <strong class="text-success ms-2" id="comunidadesActivas">6</strong>
+                    </div>
+                    <div>
+                        <span class="text-muted">Miembros online:</span>
+                        <strong class="text-info ms-2" id="miembrosOnline">2,847</strong>
+                    </div>
+                    <div>
+                        <span class="text-muted">Discusiones activas:</span>
+                        <strong class="text-warning ms-2" id="discusionesActivas">124</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
-
-
+<script src="../js/Comunidades.js"></script>
 </body>
 </html>
