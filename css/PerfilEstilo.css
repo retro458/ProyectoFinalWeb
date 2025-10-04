@@ -1,0 +1,57 @@
+body#profileBody {
+    position: relative;
+    min-height: 100vh;
+    background-color: #1b2838; /* color fallback si no hay imagen */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* efecto tipo parallax */
+    color: #f0f0f0;
+  }
+  
+  body#profileBody::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6); /* oscurece el fondo */
+    backdrop-filter: blur(3px);   /* efecto blur opcional */
+    z-index: 0;
+  }
+  
+  /* Asegura que el contenido esté por encima del overlay */
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+  .profile-header {
+    background: #171a21;
+    padding: 2rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  .profile-header img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border: 3px solid #66c0f4;
+  }
+  .profile-info h2 {
+    color: #66c0f4;
+  }
+  .edit-btn {
+    background: #66c0f4;
+    color: #0f1923;
+    font-weight: bold;
+  }
+  .edit-btn:hover {
+    background: #4fa3d1;
+  }
+  .bio-box {
+    background: #2a2a2a;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 1.5rem;
+  }
