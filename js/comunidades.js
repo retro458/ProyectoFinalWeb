@@ -33,7 +33,7 @@ class SteamCommunities {
                 subtitulo: "Survival Horror Legends",
                 descripcion: "Analizamos cada rincón de la niebla. Teorías, guías y la mejor comunidad de horror psicológico.",
                 icono: "🏚️",
-                banner: "",
+                banner: "../img/silent-hill-3-hd-wallpapers-1920x1080.jpg",
                 miembros: 8920,
                 online: 1560,
                 discusiones: 38,
@@ -147,6 +147,9 @@ class SteamCommunities {
                                         data-comunidad="${comunidad.id}">
                                     ${estaUnida ? '✅ UNIDO' : '🎮 UNIRSE'}
                                 </button>
+                                <button class="btn-steam-view" onclick="steamCommunities.verComunidad(${comunidad.id})">
+                                    🔍 Ver
+                                     </button>
                                 <div class="steam-activity">
                                     <span class="steam-online-dot"></span>
                                     <span>${this.getNivelActividad(comunidad.actividad)}</span>
@@ -160,7 +163,13 @@ class SteamCommunities {
 
         grid.innerHTML = html;
     }
-
+    verComunidad(id) {
+        // Guardar temporalmente la comunidad en localStorage
+        const comunidad = this.comunidades.find(c => c.id === id);
+        localStorage.setItem('comunidadActual', JSON.stringify(comunidad));
+        // Redirigir a la plantilla
+        window.location.href = `comunidad.html?id=${id}`;
+      }
     toggleUnion(comunidadId) {
         const boton = document.querySelector(`[data-comunidad="${comunidadId}"]`);
         
@@ -208,7 +217,12 @@ class SteamCommunities {
 
     mostrarNotificacion(mensaje, tipo) {
         // Sistema de notificaciones (se implementara despues)
-        console.log(`[${tipo.toUpperCase()}] ${mensaje}`);
+        const container = document.getElementById('notificacionesContainer');
+        const noti = document.createElement('div');
+        noti.className = `notificacion ${tipo}`;
+        noti.textContent = mensaje;
+        container.appendChild(noti);
+        setTimeout(() => noti.remove(), 3000);
     }
 }
 
