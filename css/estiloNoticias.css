@@ -63,3 +63,34 @@
   .card:nth-child(2) { animation-delay: 0.2s; }
   .card:nth-child(3) { animation-delay: 0.3s; }
   .card:nth-child(4) { animation-delay: 0.4s; }
+
+ /* Mostrar detalles de noticias */
+
+ /* Estilos para la página de detalle de noticias */
+.noticia-contenido {
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+.noticia-contenido p {
+    text-align: justify;
+}
+
+.breadcrumb {
+    background-color: transparent;
+    padding: 0;
+}
+
+.lead.bg-light {
+    border-left: 4px solid #dc3545;
+}
+
+/* Mejoras para la página de detalle */
+.img-fluid.rounded {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.display-5 {
+    color: #333;
+    line-height: 1.3;
+}
