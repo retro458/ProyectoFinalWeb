@@ -16,6 +16,10 @@
             <a class="navbar-brand" href="index.html">
                 <i class="fas fa-gamepad me-2"></i>Comunidad Gamer
             </a>
+            <!-- Agregar este enlace para acceder al formulario -->
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="../html/formulario-noticias.html">Administrar Noticias</a>
+            </div>
         </div>
     </nav>
 
@@ -48,28 +52,30 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <span class="badge-categoria">EXCLUSIVO</span>
-                            <small class="text-muted"><i class="fas fa-calendar me-1"></i>30 octube 2025</small>
+                            <small class="text-muted"><i class="fas fa-calendar me-1"></i>30 octubre 2025</small>
                         </div>
                         <h2 class="card-title">MetalGear Solid Delta: Snake Eater</h2>
-                        <p class="card-text lead">Análisis en profundidad de este clasico inolvidable de la PS2 que sale de nuevo con un lavado de cara espeactacula.</p>
-                        <p class="card-text">Haciendo uso del potente Unreal Engine 5, metal gear solid delta: snake eater vuelve sorprender a fans y a los que viven esta experiencia por primera vez.</p>
+                        <p class="card-text lead">Análisis en profundidad de este clásico inolvidable de la PS2 que sale de nuevo con un lavado de cara espectacular.</p>
+                        <p class="card-text">Haciendo uso del potente Unreal Engine 5, metal gear solid delta: snake eater vuelve a sorprender a fans y a los que viven esta experiencia por primera vez.</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <a href="#" class="btn btn-danger">Leer Análisis Completo</a>
-                            <small class="text-muted">Por: <strong><Em>Equipo TorontoAnalistic</Em></strong></small>
+                            <small class="text-muted">Por: <strong><em>Equipo TorontoAnalistic</em></strong></small>
                         </div>
                     </div>
                 </article>
 
                 <!-- Grid de Noticias -->
-                <div class="row">
-                    <!-- Noticia 1 -->
-                    <div class="col-md-6 mb-4" div data-aos="flip-up">
-                        <article class="card news-card h-100 card-scroll" >
+                <div class="row" id="gridNoticias">
+                    <!-- Las noticias se cargarán aquí dinámicamente desde LocalStorage -->
+                    
+                    <!-- Noticias por defecto (se mostrarán si no hay noticias en LocalStorage) -->
+                    <div class="col-md-6 mb-4" data-aos="flip-up">
+                        <article class="card news-card h-100 card-scroll">
                             <img src="../imgs_Noticas/header.jpg" class="card-img-top news-image" alt="Review">
                             <div class="card-body d-flex flex-column">
                                 <span class="badge-categoria mb-2 align-self-start">REVIEW</span>
                                 <h5 class="card-title">Análisis: Silent Hill F</h5>
-                                <p class="card-text flex-grow-1">Review completa del ultimo lanazamiento de Konami para la saga Silent Hill que regresa mas aterradora que nunca.</p>
+                                <p class="card-text flex-grow-1">Review completa del último lanzamiento de Konami para la saga Silent Hill que regresa más aterradora que nunca.</p>
                                 <div class="mt-auto">
                                     <small class="text-muted">25 septiembre 2025</small>
                                     <a href="#" class="btn btn-outline-danger btn-sm float-end">Leer</a>
@@ -78,7 +84,6 @@
                         </article>
                     </div>
 
-                    <!-- Noticia 2 -->
                     <div class="col-md-6 mb-4">
                         <article class="card news-card h-100">
                             <img src="https://via.placeholder.com/400x200/333/666?text=Evento+Especial" class="card-img-top news-image" alt="Evento">
@@ -94,7 +99,6 @@
                         </article>
                     </div>
 
-                    <!-- Noticia 3 -->
                     <div class="col-md-6 mb-4">
                         <article class="card news-card h-100">
                             <img src="https://via.placeholder.com/400x200/333/666?text=Entrevista+Exclusiva" class="card-img-top news-image" alt="Entrevista">
@@ -110,7 +114,6 @@
                         </article>
                     </div>
 
-                    <!-- Noticia 4 -->
                     <div class="col-md-6 mb-4">
                         <article class="card news-card h-100">
                             <img src="https://via.placeholder.com/400x200/333/666?text=Guía+Completa" class="card-img-top news-image" alt="Guía">
@@ -198,9 +201,53 @@
             <p>@copyright 2025 GameZone. Todos los derechos reservados.</p>
         </div>
     </footer>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-      AOS.init();
+        AOS.init();
+
+        // Función para cargar noticias desde LocalStorage
+        function cargarNoticiasDesdeStorage() {
+            const noticiasGuardadas = localStorage.getItem('noticiasGamer');
+            const noticias = noticiasGuardadas ? JSON.parse(noticiasGuardadas) : [];
+            
+            if (noticias.length === 0) {
+                // Si no hay noticias en storage, mantener el contenido por defecto
+                console.log('No hay noticias en LocalStorage, mostrando contenido por defecto');
+                return;
+            }
+            
+            // Actualizar el grid de noticias
+            const gridNoticias = document.getElementById('gridNoticias');
+            if (gridNoticias) {
+                // Generar HTML para las noticias
+                const noticiasHTML = noticias.map((noticia, index) => `
+                    <div class="col-md-6 mb-4" ${index === 0 ? 'data-aos="flip-up"' : ''}>
+                        <article class="card news-card h-100 ${index === 0 ? 'card-scroll' : ''}">
+                            <img src="${noticia.imagen}" class="card-img-top news-image" alt="${noticia.titulo}" 
+                                onerror="this.src='https://via.placeholder.com/400x200/333/666?text=Imagen+No+Disponible'">
+                            <div class="card-body d-flex flex-column">
+                                <span class="badge-categoria mb-2 align-self-start">${noticia.categoria}</span>
+                                <h5 class="card-title">${noticia.titulo}</h5>
+                                <p class="card-text flex-grow-1">${noticia.descripcionCorta}</p>
+                                <div class="mt-auto">
+                                    <small class="text-muted">${new Date(noticia.fecha).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</small>
+                                    <a href="../html/detalle-noticia.html?id=${noticia.id}" class="btn btn-outline-danger btn-sm float-end">
+                                        Leer
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                `).join('');
+                
+                gridNoticias.innerHTML = noticiasHTML;
+                console.log('Noticias cargadas desde LocalStorage:', noticias.length);
+            }
+        }
+
+        // Cargar noticias cuando la página esté lista
+        document.addEventListener('DOMContentLoaded', cargarNoticiasDesdeStorage);
     </script>
 </body>
 </html>
