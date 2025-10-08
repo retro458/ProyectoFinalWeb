@@ -132,6 +132,167 @@ body {
   transition: all 0.3s ease;
 }
 
+  /*Estilo para tarjetas de reviews*/
+  .review-card {
+  transition: all 0.3s ease;
+  border: 1px solid #2a475e !important;
+  background: linear-gradient(135deg, #1b2838 0%, #2a475e 100%) !important;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 136, 204, 0.3);
+  border-color: #66c0f4 !important;
+}
+
+.game-cover {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border: 2px solid #66c0f4;
+}
+
+.review-avatar {
+  border: 2px solid #66c0f4;
+}
+
+.bg-steam {
+  background: linear-gradient(45deg, #66c0f4, #1b2838) !important;
+}
+
+.btn-steam {
+  background: linear-gradient(45deg, #66c0f4, #2a475e);
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  transition: all 0.3s ease;
+}
+
+.btn-steam:hover {
+  background: linear-gradient(45deg, #4a9bc4, #1b2838);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 192, 244, 0.4);
+  color: white;
+}
+
+.btn-outline-steam {
+  border: 1px solid #66c0f4;
+  color: #66c0f4;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-steam:hover {
+  background: #66c0f4;
+  color: #1b2838;
+  transform: translateY(-1px);
+}
+
+.text-steam {
+  color: #66c0f4 !important;
+}
+
+.review-excerpt {
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 0.9rem;
+}
+
+.review-meta {
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #2a475e;
+}
+
+/* Badges de rating */
+.badge.bg-success {
+  background: linear-gradient(45deg, #5cb85c, #449d44) !important;
+}
+
+.badge.bg-warning {
+  background: linear-gradient(45deg, #f0ad4e, #ec971f) !important;
+}
+
+/* Efectos hover para elementos interactivos */
+.review-card .btn:hover {
+  transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .game-cover {
+    height: 120px;
+  }
+  
+  .review-card {
+    margin-bottom: 1.5rem;
+  }
+  
+  .card-header .d-flex {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 0.5rem;
+  }
+}
+
+/*Estilo para tarjetas de reviews*/
+.review-card {
+  border: 1px solid #333;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+.review-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 35px rgba(255,255,255,0.1);
+  border-color: #dc3545;
+}
+
+.review-card img {
+  transition: transform 0.4s ease;
+}
+
+.review-card:hover img {
+  transform: scale(1.05);
+}
+
+blockquote {
+  border-left: 3px solid #dc3545;
+  padding-left: 1rem;
+  margin: 0.5rem 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .review-card img {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+
+#review-carousel {
+  position: relative;
+  overflow: hidden;
+  height: 300px;
+}
+
+.review-item {
+  position: absolute;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: all 0.8s ease;
+  width: 100%;
+}
+
+.review-item.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
   /*Estilo para tarjetas de comunidades*/
   .steam-community-card {
     background: rgba(28, 28, 28, 0.95);
