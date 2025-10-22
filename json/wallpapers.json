@@ -1,0 +1,27 @@
+[
+    {
+      "id": 1,
+      "titulo": "Batman - Arkham City",
+      "categoria": "Fantasy",
+      "preview": "../wallpapers/621451.jpg",
+      "imagen": "../wallpapers/621451.jpg",
+      "resolucion": "1920x1080"
+    },
+    {
+      "id": 2,
+      "titulo": "Cyberpunk - Night City",
+      "categoria": "Sci-Fi",
+      "preview": "../img_wallpapers/cyberpunk_thumb.jpg",
+      "imagen": "../img_wallpapers/cyberpunk_full.jpg",
+      "resolucion": "2560x1440"
+    },
+    {
+      "id": 3,
+      "titulo": "Hollow Knight - The Abyss",
+      "categoria": "Indie",
+      "preview": "../img_wallpapers/hollow_thumb.jpg",
+      "imagen": "../img_wallpapers/hollow_full.jpg",
+      "resolucion": "1920x1080"
+    }
+  ]
+  

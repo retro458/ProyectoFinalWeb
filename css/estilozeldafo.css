@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Importar Hylia Serif si está descargada */
+@font-face {
+    font-family: 'Hylia Serif';
+    src: url('../fonts/HyliaSerif.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background: linear-gradient(135deg, #001F3F 0%, #0A2540 50%, #001F3F 100%); /* Gradiente azul marino con profundidad */
+    color: #ECF0F1;
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden; /* Evita scroll horizontal */
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle 2px at 20% 30%, rgba(127, 219, 255, 0.6), transparent 50%),
+        radial-gradient(circle 1px at 80% 70%, rgba(127, 219, 255, 0.4), transparent 50%),
+        radial-gradient(circle 1.5px at 50% 90%, rgba(127, 219, 255, 0.5), transparent 50%);
+    background-repeat: repeat;
+    background-size: 200px 150px;
+    animation: twinkle 4s ease-in-out infinite alternate; /* Animación sutil de estrellas/rupees */
+    z-index: -1;
+    pointer-events: none;
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.forum-header {
+    background: linear-gradient(135deg, #001F3F, #0074D9, #001F3F); /* Gradiente dinámico azul */
+    border-bottom: 3px solid #7FDBFF;
+    color: #ECF0F1;
+    position: relative;
+    overflow: hidden;
+}
+
+.forum-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(127, 219, 255, 0.1), transparent);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.hyrule-bg {
+    background-image: 
+        radial-gradient(circle 4px at 20% 80%, #7FDBFF, transparent),
+        radial-gradient(circle 3px at 70% 60%, #7FDBFF, transparent),
+        radial-gradient(circle 2px at 40% 30%, rgba(127, 219, 255, 0.8), transparent),
+        repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(127, 219, 255, 0.05) 2px, rgba(127, 219, 255, 0.05) 4px);
+    background-repeat: repeat;
+    background-size: 300px 150px;
+    opacity: 0.8;
+    animation: pulse-bg 6s ease-in-out infinite alternate; /* Pulso sutil para vida */
+}
+
+@keyframes pulse-bg {
+    0% { opacity: 0.7; transform: scale(1); }
+    100% { opacity: 0.9; transform: scale(1.02); }
+}
+
+.forum-title {
+    font-size: 2.2rem; /* Ligeramente más grande para impacto */
+    font-family: 'Hylia Serif', 'Press Start 2P', cursive;
+    font-weight: normal;
+    color: #7FDBFF;
+    text-shadow: 
+        0 0 10px #7FDBFF, /* Glow azul */
+        2px 2px 0px #001F3F, 
+        4px 4px 0px #0074D9;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    animation: glow-title 2s ease-in-out infinite alternate; /* Glow animado */
+}
+
+@keyframes glow-title {
+    0% { text-shadow: 0 0 5px #7FDBFF, 2px 2px 0px #001F3F, 4px 4px 0px #0074D9; }
+    100% { text-shadow: 0 0 20px #7FDBFF, 2px 2px 0px #001F3F, 4px 4px 0px #0074D9; }
+}
+
+.category-box {
+    background: linear-gradient(145deg, #2C3E50, #34495E); /* Gradiente sutil para profundidad */
+    border: 2px solid #3498DB;
+    border-radius: 4px; /* Bordes suaves para modernidad Zelda */
+    margin-bottom: 15px;
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.3), /* Sombra general */
+        0 0 15px rgba(127, 219, 255, 0.2); /* Glow azul sutil */
+    transition: all 0.3s ease; /* Transición suave */
+}
+
+.category-box:hover {
+    transform: translateY(-2px); /* Elevación al hover para interactividad */
+    box-shadow: 
+        0 6px 12px rgba(0, 0, 0, 0.4),
+        0 0 25px rgba(127, 219, 255, 0.4);
+}
+
+.subforum-item {
+    background: linear-gradient(145deg, #34495E, #3D566E); /* Gradiente interno */
+    border-left: 4px solid #7FDBFF;
+    padding: 12px; /* Más padding para comodidad */
+    margin: 5px 0;
+    border-radius: 4px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.subforum-item:hover {
+    background: linear-gradient(145deg, #4A6741, #5A7A5A);
+    transform: scale(1.02); /* Ligero zoom al hover */
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.2),
+        0 0 10px rgba(127, 219, 255, 0.3);
+}
+
+.stats-box {
+    background: linear-gradient(145deg, #2C3E50, #34495E);
+    border: 2px solid #3498DB;
+    border-radius: 4px;
+    padding: 15px;
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.3),
+        0 0 15px rgba(127, 219, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.stats-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 6px 12px rgba(0, 0, 0, 0.4),
+        0 0 25px rgba(127, 219, 255, 0.4);
+}
+
+.nav-link {
+    color: #ECF0F1 !important;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.nav-link:hover {
+    color: #7FDBFF !important;
+    text-shadow: 0 0 10px #7FDBFF;
+}
+
+.breadcrumb {
+    background: linear-gradient(145deg, #1E3A4A, #2C3E50);
+    border-radius: 4px;
+}
+
+.breadcrumb-item a {
+    color: #BDC3C7;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb-item a:hover {
+    color: #7FDBFF;
+}
+
+.last-post {
+    font-size: 0.85em;
+    color: #A9A9A9;
+    font-style: italic;
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+    background: radial-gradient(circle, #7FDBFF, #0074D9); /* Gradiente para brillo */
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+    box-shadow: 0 0 8px rgba(127, 219, 255, 0.7); /* Glow más intenso */
+    animation: pulse-icon 2s ease-in-out infinite alternate; /* Pulso en iconos */
+}
+
+@keyframes pulse-icon {
+    0% { box-shadow: 0 0 8px rgba(127, 219, 255, 0.7); }
+    100% { box-shadow: 0 0 15px rgba(127, 219, 255, 1); }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Hylia Serif', 'Press Start 2P', cursive;
+    font-size: 1.1rem; /* Ligeramente más grande */
+    letter-spacing: 2px;
+    text-shadow: 
+        0 0 8px #7FDBFF, /* Glow en títulos */
+        1px 1px 0px #001F3F;
+    color: #7FDBFF;
+    text-transform: uppercase;
+    transition: text-shadow 0.3s ease;
+}
+
+h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
+    text-shadow: 
+        0 0 15px #7FDBFF,
+        1px 1px 0px #001F3F;
+}
+
+.btn-primary {
+    background: linear-gradient(145deg, #7FDBFF, #0074D9);
+    border-color: #7FDBFF;
+    color: #001F3F;
+    font-weight: bold;
+    text-shadow: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 10px rgba(127, 219, 255, 0.5);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(145deg, #0074D9, #7FDBFF);
+    color: #001F3F;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3), 0 0 20px rgba(127, 219, 255, 0.7);
+}
+
+.alert-info {
+    background: linear-gradient(145deg, #0F4C75, #1E3A4A);
+    border-color: #7FDBFF;
+    color: #ECF0F1;
+    box-shadow: 0 0 15px rgba(127, 219, 255, 0.2);
+}
+
+footer {
+    background: linear-gradient(135deg, #001F3F, #0A2540);
+    color: #ECF0F1;
+    border-top: 2px solid #7FDBFF;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+}
