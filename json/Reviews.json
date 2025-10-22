@@ -1,0 +1,29 @@
+[
+  {
+    "juego": "Batman: Arkham Knight",
+    "usuario": "Felipex300",
+    "comentario": "Excelente final para una trilogía. Sentirse como Batman nunca fue tan real.",
+    "puntuacion": 9.5,
+    "imagen": "../img_reviews/batman-arkham-knight-pc-game-steam-cover.jpg"
+  },
+  {
+    "juego": "Metal Gear Solid Delta: Snake Eater",
+    "usuario": "ArisPhilos",
+    "comentario": "Un buen remake, aunque le falta algo de originalidad.",
+    "puntuacion": 8.8,
+    "imagen": "../img_reviews/1316756.png"
+  },
+  {
+    "juego": "Hollow Knight",
+    "usuario": "SilksongWhen",
+    "comentario": "Metroidvania perfecto. Arte, música y dificultad en armonía.",
+    "puntuacion": 9.2,
+    "imagen": "../img_reviews/985300.jpg"
+  },
+
+  {
+ 
+  }
+
+
+]

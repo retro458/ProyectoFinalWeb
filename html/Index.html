@@ -23,7 +23,7 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
           <li class="nav-item"><a class="nav-link" href="#noticias">Noticias</a></li>
-          <li class="nav-item"><a class="nav-link" href="#foros">Foros</a></li>
+          <li class="nav-item"><a class="nav-link" href="principalforo.html">Foros</a></li>
           <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
           <li class="nav-item"><a class="nav-link" href="Comunidades.html">Comunidades</a></li>
           <li class="nav-item"><a class="nav-link" href="Login.html">Iniciar Sesión</a></li>
@@ -35,9 +35,16 @@
   <!-- Hero -->
   <section id="inicio" class="hero">
     <div class="container">
-      <h1 class="display-3">Bienvenido a Tu Comunidad Gamer</h1>
-      <p class="lead">Noticias, foros, reviews y más… ¡todo en un solo lugar!</p>
-      <a href="Noticias.html" class="btn btn-danger btn-lg">Ver Noticias</a>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <h1 class="display-3 fw-bold mb-4">Bienvenido a Tu Comunidad Gamer</h1>
+          <p class="lead mb-5">Noticias, foros, reviews y más… ¡todo en un solo lugar!</p>
+          <div class="d-flex gap-3 justify-content-center flex-wrap">
+            <a href="Noticias.html" class="btn btn-danger btn-lg px-4">🎮 Ver Noticias</a>
+            <a href="principalforo.html" class="btn btn-outline-light btn-lg px-4">💬 Unirse al Foro</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -59,30 +66,12 @@
     </ul>
   </section>
 
+ 
   <!-- Reviews -->
-  <section id="reviews" class="container py-5">
-    <h2 class="mb-4">⭐ Reviews</h2>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="card bg-dark text-light">
-          <div class="card-body">
-            <h5 class="card-title">Juego X</h5>
-            <p class="card-text">Una reseña breve con opinión y valoración.</p>
-            <span class="badge bg-success">8/10</span>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card bg-dark text-light">
-          <div class="card-body">
-            <h5 class="card-title">Juego Y</h5>
-            <p class="card-text">Otra reseña breve con opinión y valoración.</p>
-            <span class="badge bg-warning text-dark">7/10</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="reviews" class="container py-5">
+  <h2 class="mb-4">⭐ Reseñas de la Comunidad</h2>
+  <div id="review-carousel"></div>
+</section>
 
   <!-- Footer -->
   <footer>
@@ -95,5 +84,6 @@
   <script src="../js/scriptNoticas.js"></script>
   <script src="../js/Konami.js"></script>
   <script src="../js/Login.js"></script>
+  <script src="../js/reviews.js"></script>
 </body>
 </html>
