@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+    background-color: #F5DEB3; /* Beige cálido, como tierra/granja */
+    color: #5D4037; /* Marrón oscuro para texto */
+    font-family: 'Arial', sans-serif;
+}
+
+.forum-header {
+    background: linear-gradient(135deg, #4A7043, #59C9F1); /* Verde hierba a azul cielo */
+    border-bottom: 3px solid #8B4513; /* Borde madera */
+    color: white;
+}
+
+.farm-bg {
+    background-image: 
+        radial-gradient(ellipse 20px 10px at 20% 80%, #228B22, transparent), /* Parches de hierba */
+        radial-gradient(ellipse 30px 15px at 70% 60%, #87CEEB, transparent); /* Nubes suaves */
+    background-repeat: repeat-x;
+    background-size: 400px 200px;
+    opacity: 0.8;
+}
+
+.forum-title {
+    font-size: 2rem; /* Más pequeño para pixel feel */
+    font-family: 'Press Start 2P', cursive;
+    font-weight: normal;
+    color: #DAA520; /* Dorado cálido */
+    text-shadow: 2px 2px 0px #8B4513, 4px 4px 0px #5D4037; /* Sombra pixelada */
+    letter-spacing: 2px;
+}
+
+.category-box {
+    background-color: #DEB887; /* Madera clara/beige */
+    border: 2px solid #8B4513; /* Borde madera */
+    border-radius: 0; /* Bordes rectos para pixel art */
+    margin-bottom: 15px;
+    box-shadow: 2px 2px 0px #8B4513; /* Sombra pixelada */
+}
+
+.subforum-item {
+    background-color: #E0F2E9; /* Verde muy suave */
+    border-left: 4px solid #228B22; /* Verde acento */
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 0;
+    box-shadow: inset 0 0 0 1px #C0C0C0; /* Borde sutil */
+}
+
+.subforum-item:hover {
+    background-color: #C8E6C9; /* Verde hover */
+}
+
+.stats-box {
+    background-color: #DEB887;
+    border: 2px solid #8B4513;
+    border-radius: 0;
+    padding: 15px;
+    box-shadow: 2px 2px 0px #8B4513;
+}
+
+.nav-link {
+    color: #5D4037 !important;
+}
+
+.nav-link:hover {
+    color: #228B22 !important;
+}
+
+.breadcrumb {
+    background-color: #F5F5DC; /* Beige claro */
+    border-radius: 0;
+}
+
+.breadcrumb-item a {
+    color: #5D4037;
+}
+
+.last-post {
+    font-size: 0.85em;
+    color: #8B4513; /* Marrón */
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+    background: #228B22; /* Verde */
+    border-radius: 0; /* Cuadrado pixel */
+    display: inline-block;
+    margin-right: 8px;
+    box-shadow: 1px 1px 0px #006400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1rem; /* Pequeño para pixel */
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 0px #8B4513;
+}
+
+.btn-primary {
+    background-color: #228B22;
+    border-color: #228B22;
+}
+
+.btn-primary:hover {
+    background-color: #1B5E20;
+}
+
+.alert-info {
+    background-color: #E3F2FD; /* Azul suave */
+    border-color: #59C9F1;
+    color: #01579B;
+}
+
+footer {
+    background-color: #8B4513 !important; /* Madera oscura */
+    color: #F5DEB3;
+}
