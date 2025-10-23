@@ -78,3 +78,156 @@ body {
         width: 100%;
     }
 }
+
+/* Estilos adicionales para el editor y carga de imágenes */
+
+/* Editor Quill personalizado */
+.ql-toolbar.ql-snow {
+    border: 1px solid #dc3545 !important;
+    border-bottom: none !important;
+    border-radius: 8px 8px 0 0;
+}
+
+.ql-container.ql-snow {
+    border: 1px solid #dc3545 !important;
+    border-top: none !important;
+    border-radius: 0 0 8px 8px;
+}
+
+.ql-editor {
+    min-height: 200px;
+    font-size: 16px;
+}
+
+.ql-editor.ql-blank::before {
+    color: #6c757d;
+    font-style: italic;
+}
+
+/* Área de carga de imágenes */
+.border-dashed {
+    border: 2px dashed #dee2e6;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.border-dashed:hover {
+    border-color: #dc3545;
+    background-color: #f8f9fa;
+}
+
+.bg-light {
+    background-color: #f8f9fa !important;
+    border-color: #dc3545 !important;
+}
+
+/* Vista previa de imagen */
+#vistaPreviaImagen img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Botones de acción */
+.btn-group .btn {
+    margin: 0 2px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .btn-group {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .btn-group .btn {
+        width: 100%;
+        margin: 2px 0;
+    }
+    
+    .ql-toolbar .ql-formats {
+        margin-bottom: 5px;
+    }
+}
+
+/* Estilos adicionales para embeds y editor */
+
+/* Contenedores de embed */
+.embed-container {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #dc3545;
+}
+
+.embed-container iframe {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+/* Twitter embeds */
+.twitter-embed {
+    text-align: center;
+}
+
+/* YouTube embeds */
+.youtube-embed {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+}
+
+.youtube-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Instagram embeds */
+.instagram-embed {
+    display: flex;
+    justify-content: center;
+}
+
+/* Vista previa de embeds en el editor */
+.ql-editor .embed-container {
+    background: #e9ecef;
+    border: 1px dashed #6c757d;
+}
+
+.ql-editor .embed-container::before {
+    content: "🔄 Contenido Embebido";
+    display: block;
+    font-weight: bold;
+    color: #495057;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+/* Botón personalizado en la toolbar */
+.ql-embed::before {
+    content: "📎";
+    font-size: 16px;
+}
+
+/* Modal de embed */
+#embedModal .modal-body textarea {
+    font-family: monospace;
+    font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .embed-container {
+        margin: 0.5rem 0;
+        padding: 0.5rem;
+    }
+    
+    .ql-toolbar .ql-formats {
+        margin-bottom: 5px;
+    }
+}
