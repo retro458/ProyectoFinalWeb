@@ -1,4 +1,4 @@
-// Registro de usuario
+// Registro de usuario - ACTUALIZADO CON PREGUNTAS DE SEGURIDAD
 const registerForm = document.querySelector('form');
 
 if(registerForm && window.location.pathname.includes('registro.html')) {
@@ -10,12 +10,16 @@ if(registerForm && window.location.pathname.includes('registro.html')) {
     const password = document.getElementById('password').value;
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     const confirmPassword = document.getElementById('confirm-password').value;
-    if(!name || !email || !password) {
+    const securityQuestion = document.getElementById('security-question').value;
+    const securityAnswer = document.getElementById('security-answer').value.trim();
+    
+    if(!name || !email || !password || !securityQuestion || !securityAnswer) {
       alert('Todos los campos son obligatorios.');
       return;
     }
 
     let users = JSON.parse(localStorage.getItem('users')) || [];
+    
     //confirm password
     if (password !== confirmPassword) {
         Swal.fire({
@@ -28,6 +32,7 @@ if(registerForm && window.location.pathname.includes('registro.html')) {
           });
         return;
     }   
+    
     // Validar complejidad de la contraseña
     if (!passwordRegex.test(password)) {
         Swal.fire({
@@ -40,6 +45,7 @@ if(registerForm && window.location.pathname.includes('registro.html')) {
           });
         return;
     }
+    
     // Verifica si el correo ya existe
     if(users.some(u => u.email === email)) {
         Swal.fire({
@@ -53,7 +59,15 @@ if(registerForm && window.location.pathname.includes('registro.html')) {
       return;
     }
 
-    users.push({ name, email, password });
+    // Guardar usuario con preguntas de seguridad
+    users.push({ 
+      name, 
+      email, 
+      password, 
+      securityQuestion, 
+      securityAnswer: securityAnswer.toLowerCase() // Guardar en minúsculas para comparación case-insensitive
+    });
+    
     localStorage.setItem('users', JSON.stringify(users));
     Swal.fire({
       title: "¡Registro exitoso!",
@@ -63,15 +77,14 @@ if(registerForm && window.location.pathname.includes('registro.html')) {
       color: "#f0f0f0",
       confirmButtonColor: "#ff4d4d",
       timer: 2000,
-     showConfirmButton: false
+      showConfirmButton: false
     }).then(() => {
       window.location.href = 'Login.html';
     });
-    
   });
 }
 
-// Login de usuario
+// Login de usuario (sin cambios)
 const loginForm = document.querySelector('form');
 
 if(loginForm && window.location.pathname.includes('Login.html')) {
@@ -108,10 +121,17 @@ if(loginForm && window.location.pathname.includes('Login.html')) {
       }
   });
   
-   
+  // Agregar evento al enlace de "Olvidaste tu contraseña"
+  const forgotPasswordLink = document.querySelector('.forgot-password');
+  if (forgotPasswordLink) {
+    forgotPasswordLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = 'recuperar.html';
+    });
+  }
 }
 
-// Mantener sesión activa en Home
+// Mantener sesión activa en Home (sin cambios)
 const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 // Ocultar links de login/registro si hay usuario
 if(currentUser && window.location.pathname.includes('Index.html')) {
@@ -120,7 +140,6 @@ if(currentUser && window.location.pathname.includes('Index.html')) {
     if (loginLink) loginLink.style.display = 'none';
     if (registroLink) registroLink.style.display = 'none';
 }
-
 
 if(currentUser && window.location.pathname.includes('Index.html')) {
   const nav = document.querySelector('.navbar-nav');
@@ -137,6 +156,6 @@ if(currentUser && window.location.pathname.includes('Index.html')) {
 
   document.getElementById('logoutBtn').addEventListener('click', () => {
     localStorage.removeItem('currentUser');
-    window.location.reload(); // tras recargar, los links volverán a mostrarse
+    window.location.reload();
   });
 }
