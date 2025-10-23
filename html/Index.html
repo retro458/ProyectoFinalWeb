@@ -14,34 +14,41 @@
 
   <!-- Navbar -->
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark container">
-      <a class="navbar-brand" href="#">🎮 GameZone</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link" href="#noticias">Noticias</a></li>
-          <li class="nav-item"><a class="nav-link" href="principalforo.html">Foros</a></li>
-          <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
-          <li class="nav-item"><a class="nav-link" href="Comunidades.html">Comunidades</a></li>
-          <li class="nav-item"><a class="nav-link" href="Login.html">Iniciar Sesión</a></li>
-        </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#">🎮 GameZone</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link active" href="#inicio">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="#noticias">Noticias</a></li>
+            <li class="nav-item"><a class="nav-link" href="principalforo.html">Foros</a></li>
+            <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
+            <li class="nav-item"><a class="nav-link" href="Comunidades.html">Comunidades</a></li>
+            <li class="nav-item"><a class="nav-link btn-login" href="Login.html">Iniciar Sesión</a></li>
+          </ul>
+        </div>
       </div>
     </nav>
   </header>
 
   <!-- Hero -->
   <section id="inicio" class="hero">
+    <div class="hero-overlay"></div>
     <div class="container">
-      <div class="row justify-content-center">
+      <div class="row justify-content-center text-center">
         <div class="col-lg-8">
-          <h1 class="display-3 fw-bold mb-4">Bienvenido a Tu Comunidad Gamer</h1>
-          <p class="lead mb-5">Noticias, foros, reviews y más… ¡todo en un solo lugar!</p>
+          <h1 class="display-3 fw-bold mb-4 hero-title">Bienvenido a Tu Comunidad Gamer</h1>
+          <p class="lead mb-5 hero-subtitle">Noticias, foros, reviews y más… ¡todo en un solo lugar!</p>
           <div class="d-flex gap-3 justify-content-center flex-wrap">
-            <a href="Noticias.html" class="btn btn-danger btn-lg px-4">🎮 Ver Noticias</a>
-            <a href="principalforo.html" class="btn btn-outline-light btn-lg px-4">💬 Unirse al Foro</a>
+            <a href="Noticias.html" class="btn btn-danger btn-lg px-4 py-2 btn-hero">
+              <i class="fas fa-gamepad me-2"></i>Ver Noticias
+            </a>
+            <a href="principalforo.html" class="btn btn-outline-light btn-lg px-4 py-2 btn-hero">
+              <i class="fas fa-comments me-2"></i>Unirse al Foro
+            </a>
           </div>
         </div>
       </div>
@@ -49,33 +56,63 @@
   </section>
 
   <!-- Noticias -->
-<section id="noticias" class="container py-5">
-  <h2 class="text-center mb-5">📰 Últimas Noticias</h2>
-  <div id="listaNoticias" class="row">
-   
-  </div>
-</section>
-
-  <!-- Foros -->
-  <section id="foros" class="container py-5">
-    <h2 class="mb-4">💬 Foros</h2>
-    <ul class="list-group">
-      <li class="list-group-item bg-dark text-light">Tema 1: Nuevo lanzamiento</li>
-      <li class="list-group-item bg-dark text-light">Tema 2: Debate sobre la industria</li>
-      <li class="list-group-item bg-dark text-light">Tema 3: Compartir capturas de pantalla</li>
-    </ul>
+  <section id="noticias" class="container py-5">
+    <h2 class="text-center mb-5 section-title">📰 Últimas Noticias</h2>
+    <div id="listaNoticias" class="row g-4">
+      <!-- Las noticias se cargarán dinámicamente -->
+    </div>
   </section>
 
- 
+  <!-- Foros -->
+  <section id="foros" class="bg-dark py-5">
+    <div class="container">
+      <h2 class="text-center mb-5 section-title">💬 Foros Populares</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="forum-card">
+            <i class="fas fa-rocket forum-icon"></i>
+            <h4>Nuevos Lanzamientos</h4>
+            <p>Discute los últimos juegos</p>
+            <span class="forum-badge">245 temas</span>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="forum-card">
+            <i class="fas fa-chart-line forum-icon"></i>
+            <h4>Debate Industria</h4>
+            <p>Noticias y tendencias</p>
+            <span class="forum-badge">189 temas</span>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="forum-card">
+            <i class="fas fa-camera forum-icon"></i>
+            <h4>Capturas & Gameplay</h4>
+            <p>Comparte tus mejores momentos</p>
+            <span class="forum-badge">567 temas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Reviews -->
 <section id="reviews" class="container py-5">
-  <h2 class="mb-4">⭐ Reseñas de la Comunidad</h2>
-  <div id="review-carousel"></div>
+  <h2 class="text-center mb-5 section-title">⭐ Reseñas de la Comunidad</h2>
+  <div id="review-carousel" class="reviews-container position-relative">
+    <!-- Las reviews se cargarán dinámicamente -->
+  </div>
 </section>
-
   <!-- Footer -->
-  <footer>
-    <p>© 2025 TorontoSoft | Todos los derechos reservados</p>
+  <footer class="custom-footer">
+    <div class="container">
+      <p class="mb-0">© 2025 TorontoSoft | Todos los derechos reservados</p>
+      <div class="footer-social mt-2">
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
   </footer>
 
   <!-- Bootstrap JS -->
