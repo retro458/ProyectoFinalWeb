@@ -14,8 +14,6 @@ const usuariosSimulados = [
 
 // Historial de conversación
 const historialConversacion = [];
-let chatActivo = true;
-let mensajesEnviados = 0;
 
 if (data) {
     document.title = `${data.nombre} - Comunidad`;
@@ -30,21 +28,17 @@ if (data) {
             </div>
             <p class="mb-3">${data.descripcion}</p>
             <div class="row text-center">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <strong>Miembros</strong>
                     <div class="fs-5 text-warning">${data.miembros}</div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <strong>Online</strong>
                     <div class="fs-5 text-success">${data.online}</div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <strong>Actividad</strong>
                     <div class="fs-5 text-info">${data.actividad}</div>
-                </div>
-                <div class="col-md-3">
-                    <strong>Discusiones</strong>
-                    <div class="fs-5 text-primary">${data.discusiones}</div>
                 </div>
             </div>
             <div class="mt-3">
@@ -60,42 +54,19 @@ async function inicializarChatDinamico() {
     const chatContainer = document.getElementById('chatMessages');
     if (!chatContainer) return;
 
-    // Sistema de bienvenida contextual
-    mostrarBienvenidaContextual(chatContainer);
-    
+    // Mostrar mensaje de bienvenida inmediato
+    agregarMensajeAlChat(chatContainer, "Sistema", "🤖", 
+        `¡Bienvenido a ${data.nombre}! .`, "", false);
+
     // Cargar mensajes iniciales
     await cargarMensajesIniciales(chatContainer);
     
-    // Iniciar sistemas
+    // Iniciar simulación de actividad
     iniciarSimulacionActividad(chatContainer);
-    iniciarSistemaReacciones();
-    iniciarContadorActividad();
-}
-
-function mostrarBienvenidaContextual(container) {
-    const hora = new Date().getHours();
-    let saludo = "¡Bienvenido!";
-    
-    if (hora < 12) saludo = "¡Buenos días!";
-    else if (hora < 18) saludo = "¡Buenas tardes!";
-    else saludo = "¡Buenas noches!";
-
-    agregarMensajeAlChat(container, "Sistema", "🤖", 
-        `${saludo} Has entrado a ${data.nombre}. ${generarFraseContextual()}`, "", false);
-}
-
-function generarFraseContextual() {
-    const frases = [
-        "¡Es genial verte por aquí!",
-        "La comunidad está muy activa hoy.",
-        "¿Has probado las últimas novedades?",
-        "No dudes en preguntar lo que necesites.",
-        "¡Hay eventos interesantes esta semana!"
-    ];
-    return frases[Math.floor(Math.random() * frases.length)];
 }
 
 async function cargarMensajesIniciales(container) {
+    // Solo 1-2 mensajes iniciales para no saturar
     const cantidadInicial = Math.floor(Math.random() * 2) + 1;
     
     for (let i = 0; i < cantidadInicial; i++) {
@@ -107,7 +78,7 @@ async function cargarMensajesIniciales(container) {
 async function generarMensajeContextual(container, esNuevo = true, mensajeUsuario = null) {
     try {
         const usuario = usuariosSimulados[Math.floor(Math.random() * usuariosSimulados.length)];
-        const contexto = `${data.tags.join(', ')} | ${usuario.personalidad} | ${obtenerTemaConversacion()}`;
+        const contexto = `${data.tags.join(', ')} - como ${usuario.personalidad}`;
         
         console.log(`🤖 Generando respuesta contextual para: ${usuario.nombre}`);
         
@@ -118,7 +89,6 @@ async function generarMensajeContextual(container, esNuevo = true, mensajeUsuari
                 nombreBot: usuario.nombre,
                 contexto: contexto,
                 mensajeUsuario: mensajeUsuario,
-                historial: historialConversacion.slice(-3),
                 sessionId: sessionId
             })
         });
@@ -128,7 +98,6 @@ async function generarMensajeContextual(container, esNuevo = true, mensajeUsuari
         const result = await response.json();
         
         let mensajeFinal = result.mensaje || generarMensajeFallback(contexto, mensajeUsuario);
-        mensajeFinal = agregarEmojisAleatorios(mensajeFinal);
         
         // Agregar al historial
         historialConversacion.push({
@@ -154,22 +123,6 @@ async function generarMensajeContextual(container, esNuevo = true, mensajeUsuari
     }
 }
 
-function obtenerTemaConversacion() {
-    const temas = [
-        "última actualización", "estrategias avanzadas", "eventos comunitarios",
-        "secretos del juego", "consejos para principiantes", "mods interesantes"
-    ];
-    return temas[Math.floor(Math.random() * temas.length)];
-}
-
-function agregarEmojisAleatorios(mensaje) {
-    const emojis = ['🎮', '🔥', '⚡', '💎', '🌟', '🎯', '🏆'];
-    if (Math.random() > 0.7) {
-        return mensaje + ' ' + emojis[Math.floor(Math.random() * emojis.length)];
-    }
-    return mensaje;
-}
-
 function generarMensajeFallback(contexto, mensajeUsuario = null) {
     if (mensajeUsuario) {
         const respuestas = [
@@ -190,70 +143,16 @@ function generarMensajeFallback(contexto, mensajeUsuario = null) {
 }
 
 function iniciarSimulacionActividad(container) {
+    // Mensajes automáticos menos frecuentes para no interferir con conversaciones
     setInterval(async () => {
-        if (chatActivo && (historialConversacion.length < 10 || Math.random() > 0.7)) {
+        // Solo generar mensaje automático si no hay mucha actividad reciente
+        if (historialConversacion.length < 10 || Math.random() > 0.7) {
             await generarMensajeContextual(container, true);
         }
-    }, 30000);
+    }, 30000); // Cada 30 segundos
 }
 
-// Sistema de reacciones
-function iniciarSistemaReacciones() {
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('message-content')) {
-            const mensaje = e.target.closest('.message');
-            if (!mensaje.querySelector('.reacciones')) {
-                agregarReacciones(mensaje);
-            }
-        }
-    });
-}
-
-function agregarReacciones(elementoMensaje) {
-    const reacciones = document.createElement('div');
-    reacciones.className = 'reacciones mt-2';
-    reacciones.innerHTML = `
-        <button class="btn-reaccion" onclick="agregarReaccion(this, '👍')">👍</button>
-        <button class="btn-reaccion" onclick="agregarReaccion(this, '❤️')">❤️</button>
-        <button class="btn-reaccion" onclick="agregarReaccion(this, '😂')">😂</button>
-        <button class="btn-reaccion" onclick="agregarReaccion(this, '🎮')">🎮</button>
-    `;
-    elementoMensaje.appendChild(reacciones);
-}
-
-function agregarReaccion(boton, reaccion) {
-    const mensaje = boton.closest('.message');
-    let contador = mensaje.querySelector('.contador-reacciones');
-    
-    if (!contador) {
-        contador = document.createElement('span');
-        contador.className = 'contador-reacciones ms-2 text-primary';
-        boton.parentNode.appendChild(contador);
-    }
-    
-    let count = parseInt(contador.textContent) || 0;
-    count++;
-    contador.textContent = count;
-    
-    boton.style.transform = 'scale(1.2)';
-    setTimeout(() => {
-        boton.style.transform = 'scale(1)';
-    }, 200);
-}
-
-// Contador de actividad
-function iniciarContadorActividad() {
-    const actividadElement = document.createElement('div');
-    actividadElement.className = 'actividad-chat';
-    document.querySelector('.card-body').appendChild(actividadElement);
-
-    setInterval(() => {
-        const miembros = Math.floor(Math.random() * 10) + data.online;
-        actividadElement.innerHTML = `<i class="fas fa-users me-1"></i>${miembros} miembros activos en el chat`;
-    }, 30000);
-}
-
-// FUNCIÓN PRINCIPAL MEJORADA
+// **FUNCIÓN PRINCIPAL MEJORADA - Ahora sí responde contextualmente**
 async function enviarMensaje() {
     const input = document.getElementById('messageInput');
     const mensaje = input.value.trim();
@@ -261,7 +160,6 @@ async function enviarMensaje() {
     
     if (mensaje && chatContainer) {
         console.log(`👤 Usuario escribe: ${mensaje}`);
-        mensajesEnviados++;
         
         // Agregar mensaje del usuario inmediatamente
         agregarMensajeAlChat(chatContainer, "Tú", "👤", mensaje, "Ahora", true);
@@ -275,18 +173,9 @@ async function enviarMensaje() {
         
         input.value = '';
         
-        // Registrar en estadísticas
-        if (window.estadisticasUsuario) {
-            estadisticasUsuario.registrarMensajeEnviado();
-        }
-        
-        // Verificar logros
-        if (window.sistemaLogros) {
-            sistemaLogros.verificarLogros();
-        }
-        
-        // RESPUESTA CONTEXTUAL MEJORADA
+        // **RESPUESTA CONTEXTUAL - El bot responde AL MENSAJE DEL USUARIO**
         setTimeout(async () => {
+            // Elegir un bot aleatorio para responder
             await generarMensajeContextual(chatContainer, true, mensaje);
             
             // Posible segunda respuesta de otro bot (50% de probabilidad)
@@ -295,7 +184,7 @@ async function enviarMensaje() {
                     await generarMensajeContextual(chatContainer, true, mensaje);
                 }, 2000);
             }
-        }, 1000);
+        }, 1000); // Respuesta en 1 segundo
     }
 }
 
@@ -310,15 +199,13 @@ function agregarMensajeAlChat(container, usuario, icono, mensaje, tiempo, esNuev
     const mensajeHTML = `
         <div class="message ${esNuevo ? 'new-message' : ''} mb-3">
             <div class="d-flex align-items-start">
-                <span class="me-2 fs-5">${icono}</span>
+                <span class="me-2">${icono}</span>
                 <div class="flex-grow-1">
-                    <div class="d-flex justify-content-between align-items-center mb-1">
+                    <div class="d-flex justify-content-between">
                         <strong class="${usuario === 'Tú' ? 'text-primary' : 'text-warning'}">${usuario}</strong>
                         <small class="text-muted">${tiempo}</small>
                     </div>
-                    <div class="message-content">
-                        <p class="mb-0 text-light">${mensaje}</p>
-                    </div>
+                    <p class="mb-0 text-light">${mensaje}</p>
                 </div>
             </div>
         </div>
@@ -328,20 +215,10 @@ function agregarMensajeAlChat(container, usuario, icono, mensaje, tiempo, esNuev
     
     if (esNuevo) {
         container.scrollTop = container.scrollHeight;
-        
-        // Efecto visual para nuevos mensajes
-        const nuevosMensajes = container.querySelectorAll('.new-message');
-        nuevosMensajes.forEach(msg => {
-            msg.style.animation = 'highlight 2s ease';
-            setTimeout(() => {
-                msg.classList.remove('new-message');
-                msg.style.animation = '';
-            }, 2000);
-        });
     }
 }
 
-// Event listeners mejorados
+// Event listeners
 document.addEventListener('DOMContentLoaded', function() {
     const input = document.getElementById('messageInput');
     if (input) {
@@ -350,21 +227,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 enviarMensaje();
             }
         });
-        
-        // Placeholder dinámico
-        const placeholders = [
-            "Escribe un mensaje...",
-            `Pregunta sobre ${data?.tags[0] || 'el juego'}...`,
-            "Comparte tu experiencia...",
-            "¿Alguna estrategia que recomiendes?"
-        ];
-        let placeholderIndex = 0;
-        
-        setInterval(() => {
-            input.placeholder = placeholders[placeholderIndex];
-            placeholderIndex = (placeholderIndex + 1) % placeholders.length;
-        }, 3000);
-        
         input.focus();
     }
 });

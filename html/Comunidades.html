@@ -4,14 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Comunidades - GamesFun</title>
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="../css/estilos.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="icon" type="image/png" href="../icono/1032996.png">
 </head>
 <body>
-    <!-- Navigacion -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+       <!-- Navigacion -->
+       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="index.html">
                 <i class="fas fa-gamepad me-2"></i>Comunidad Gamer
@@ -21,99 +22,31 @@
 
 <!-- Sección Comunidades de Juegos -->
 <section id="comunidades-juegos" class="container py-5">
-    <!-- Header con botón de crear comunidad -->
+    <!-- Header al estilo Steam -->
     <div class="row mb-4">
         <div class="col-12">
             <div class="d-flex justify-content-between align-items-center">
                 <h2 class="mb-0">🎮 Comunidades de Juegos</h2>
                 <div class="d-flex gap-2">
-                    <a href="crearComunidad.html" class="btn btn-primary">
-                        <i class="fas fa-plus me-2"></i>Crear Comunidad
-                    </a>
                     <div class="input-group" style="width: 300px;">
-                        <input type="text" id="searchInput" class="form-control bg-dark text-light border-secondary" 
-                               placeholder="Buscar comunidades..." onkeyup="steamCommunities.buscarComunidades()">
+                        <input type="text" class="form-control bg-dark text-light border-secondary" 
+                               placeholder="Buscar comunidades...">
                         <button class="btn btn-outline-secondary">🔍</button>
                     </div>
-                    <select class="form-select bg-dark text-light border-secondary" id="sortSelect" 
-                            onchange="steamCommunities.aplicarFiltros()" style="width: 200px;">
-                        <option value="actividad">Ordenar por: Actividad</option>
-                        <option value="miembros">Miembros</option>
-                        <option value="recientes">Recientes</option>
-                        <option value="alfabetico">Alfabético</option>
+                    <select class="form-select bg-dark text-light border-secondary" style="width: 200px;">
+                        <option>Ordenar por: Actividad</option>
+                        <option>Miembros</option>
+                        <option>Recientes</option>
+                        <option>Alfabético</option>
                     </select>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Filtros Avanzados -->
-    <div class="row mb-4">
-        <div class="col-12">
-            <div class="card bg-dark border-secondary">
-                <div class="card-body">
-                    <h5 class="card-title mb-3 text-light">🔍 Filtros Avanzados</h5>
-                    <div class="row g-3">
-                        <div class="col-md-3">
-                            <label class="form-label text-light">Plataforma</label>
-                            <select class="form-select bg-dark text-light border-secondary" id="filtroPlataforma" onchange="steamCommunities.aplicarFiltros()">
-                                <option value="">Todas</option>
-                                <option value="PC">PC</option>
-                                <option value="PS5">PS5</option>
-                                <option value="Xbox">Xbox</option>
-                                <option value="Multiplataforma">Multiplataforma</option>
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <label class="form-label text-light">Género</label>
-                            <select class="form-select bg-dark text-light border-secondary" id="filtroGenero" onchange="steamCommunities.aplicarFiltros()">
-                                <option value="">Todos</option>
-                                <option value="Shooter">Shooter</option>
-                                <option value="RPG">RPG</option>
-                                <option value="Horror">Horror</option>
-                                <option value="Metroidvania">Metroidvania</option>
-                                <option value="Cooperativo">Cooperativo</option>
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <label class="form-label text-light">Actividad</label>
-                            <select class="form-select bg-dark text-light border-secondary" id="filtroActividad" onchange="steamCommunities.aplicarFiltros()">
-                                <option value="">Todas</option>
-                                <option value="muy alta">Muy Alta</option>
-                                <option value="alta">Alta</option>
-                                <option value="media">Media</option>
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <label class="form-label text-light">&nbsp;</label>
-                            <button class="btn btn-outline-secondary w-100" onclick="steamCommunities.limpiarFiltros()">
-                                <i class="fas fa-times me-1"></i>Limpiar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Sección de Recomendaciones -->
-    <div id="seccionRecomendaciones"></div>
-
     <!-- Grid de Comunidades -->
     <div class="row g-4" id="comunidadesGrid">
         <!-- Las comunidades se cargarán aquí -->
-    </div>
-
-    <!-- Estado de filtros -->
-    <div id="estadoFiltros" class="text-center py-4" style="display: none;">
-        <div class="text-muted">
-            <i class="fas fa-search fa-2x mb-3"></i>
-            <h4>No se encontraron comunidades</h4>
-            <p>Intenta con otros filtros o términos de búsqueda</p>
-            <button class="btn btn-primary" onclick="steamCommunities.limpiarFiltros()">
-                <i class="fas fa-times me-1"></i>Limpiar Filtros
-            </button>
-        </div>
     </div>
 
     <!-- Barra de estado tipo Steam -->
@@ -133,48 +66,13 @@
                         <span class="text-muted">Discusiones activas:</span>
                         <strong class="text-warning ms-2" id="discusionesActivas">124</strong>
                     </div>
-                    <div>
-                        <span class="text-muted">Tus comunidades:</span>
-                        <strong class="text-primary ms-2" id="misComunidades">0</strong>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Botón para abrir panel de notificaciones -->
-<button class="btn btn-outline-primary position-fixed" 
-        style="bottom: 20px; right: 20px; z-index: 1000;"
-        onclick="sistemaNotificaciones.mostrarPanelNotificaciones()">
-    <i class="fas fa-bell"></i>
-    <span class="badge bg-danger" id="contadorNotificaciones">0</span>
-</button>
-
-<!-- Panel de notificaciones -->
-<div class="panel-notificaciones" id="panelNotificaciones">
-    <div class="panel-header">
-        <div class="panel-titulo">
-            <i class="fas fa-bell me-2"></i>Notificaciones
-        </div>
-        <button class="btn-cerrar-panel" onclick="sistemaNotificaciones.cerrarPanelNotificaciones()">
-            <i class="fas fa-times"></i>
-        </button>
-    </div>
-    <div class="panel-contenido" id="contenidoPanelNotificaciones">
-        <!-- Las notificaciones se cargarán aquí -->
-    </div>
-</div>
-
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../js/sistemaNotificaciones.js"></script>
-<script src="../js/comunidades.js"></script>
-<script>
-    // Inicializar todos los sistemas
-    document.addEventListener('DOMContentLoaded', function() {
-        window.steamCommunities = new SteamCommunities();
-    });
-</script>
+<script src="../js/Comunidades.js"></script>
+<div id="notificacionesContainer" class="notificaciones-container"></div>
 </body>
 </html>
