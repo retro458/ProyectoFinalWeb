@@ -1,0 +1,218 @@
+/* styles.css - Tema Fortnite con Layout de Paneles y Animaciones - Fuente más legible */
+
+/* Colores Temáticos de Fortnite: Oscuro con acentos púrpura, verde, dorado */
+:root {
+    --fortnite-dark: #0F0F23;
+    --fortnite-main: #1A1A2E;
+    --fortnite-purple: #8B5CF6;
+    --fortnite-green: #10B981;
+    --fortnite-gold: #F59E0B;
+    --fortnite-blue: #3B82F6;
+    --text-muted: #A0A0A0;
+}
+
+/* Body y Fondo General - Fuente principal cambiada a Rajdhani para mejor legibilidad */
+body {
+    background: linear-gradient(135deg, var(--fortnite-dark), var(--fortnite-purple));
+    font-family: 'Rajdhani', sans-serif;
+    color: white;
+    overflow-x: hidden;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+/* Clase para texto legible (aplicada ampliamente) */
+.font-readable {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 400;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* Header con Estrellas Animadas */
+.bg-fortnite-header {
+    background: radial-gradient(ellipse at bottom, var(--fortnite-main) 0%, var(--fortnite-dark) 70%);
+    position: relative;
+}
+
+.stars-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+        radial-gradient(2px 2px at 40px 70px, var(--fortnite-gold), transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 130px 80px, var(--fortnite-purple), transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: twinkle 20s linear infinite;
+}
+
+@keyframes twinkle {
+    from { transform: translateY(0px); }
+    to { transform: translateY(-200px); }
+}
+
+/* Logo y Título - Logo mantiene Bangers, subtítulo legible */
+.logo-fortnite {
+    font-family: 'Bangers', cursive;
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-shadow: 0 0 10px var(--fortnite-gold);
+}
+
+.fortnite-subtitle {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+    text-shadow: 0 0 5px var(--fortnite-purple);
+}
+
+/* Botones en el Header - Evitar solapamiento */
+.header-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.header-buttons .btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Sidebars y Main */
+.sidebar-left, .sidebar-right {
+    background: var(--fortnite-dark);
+    border-right: 1px solid var(--fortnite-purple);
+}
+
+.bg-fortnite-main {
+    background: var(--fortnite-main);
+    border-left: 1px solid var(--fortnite-purple);
+    border-right: 1px solid var(--fortnite-purple);
+}
+
+/* Enlaces de Foros */
+.forum-link {
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+    font-weight: 400;
+}
+
+.forum-link:hover {
+    background: rgba(139, 92, 246, 0.2);
+    border-left-color: var(--fortnite-gold);
+    transform: translateX(5px);
+}
+
+/* Panels de Threads */
+.bg-fortnite-panel {
+    background: rgba(26, 26, 46, 0.8);
+    border: 1px solid var(--fortnite-purple);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.bg-fortnite-panel:hover {
+    background: rgba(139, 92, 246, 0.1);
+    border-color: var(--fortnite-gold);
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+}
+
+/* Texto Dorado */
+.text-fortnite-gold {
+    color: var(--fortnite-gold) !important;
+    text-shadow: 0 0 5px var(--fortnite-gold);
+    font-weight: 500;
+}
+
+/* Animaciones */
+@keyframes drop {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-drop {
+    animation: drop 1s ease-out;
+}
+
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.animate-fade {
+    animation: fade 0.5s ease-in;
+}
+
+@keyframes slide-in {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-slide-in {
+    animation: slide-in 0.6s ease-out forwards;
+}
+
+.animate-pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+}
+
+/* Stats Animación de Conteo */
+.animate-count {
+    animation: count 2s ease-out;
+    font-weight: 600;
+}
+
+@keyframes count {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Responsive - Ajustes para Header en pantallas pequeñas */
+@media (max-width: 992px) {
+    .sidebar-left, .sidebar-right {
+        display: none;
+    }
+    .col-lg-5, .col-lg-3 {
+        border-left: none !important;
+        border-right: none !important;
+    }
+    
+    /* Específico para botones del header: Apilar verticalmente para evitar solapamiento */
+    .header-buttons {
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0.25rem;
+    }
+    
+    .header-buttons .btn {
+        width: 100%;
+        max-width: 150px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .header-buttons .btn {
+        max-width: 120px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Footer */
+.bg-fortnite-dark {
+    background: var(--fortnite-dark);
+}
