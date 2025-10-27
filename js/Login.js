@@ -1,7 +1,7 @@
 // Registro de usuario - ACTUALIZADO CON PREGUNTAS DE SEGURIDAD
 const registerForm = document.querySelector('form');
 
-if(registerForm && window.location.pathname.includes('registro.html')) {
+if(registerForm && window.location.pathname.includes('Registro.html')) {
   registerForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
@@ -146,7 +146,7 @@ if(currentUser && window.location.pathname.includes('Index.html')) {
 
   const welcome = document.createElement('li');
   welcome.classList.add('nav-item');
-  welcome.innerHTML =  `<a class="nav-link" href="perfil.html">Hola, ${currentUser.name}</a>`;
+  welcome.innerHTML =  `<a class="nav-link" href="Perfil.html">Hola, ${currentUser.name}</a>`;
   nav.appendChild(welcome);
 
   const logout = document.createElement('li');

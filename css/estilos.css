@@ -533,6 +533,168 @@
     box-shadow: 0 0 20px rgba(102, 192, 244, 0.3);
 }
 
+/* 🔹 Contenedor general */
+#comunidadesGrid {
+  margin-top: 2rem;
+}
+
+/* 🔹 Tarjeta base */
+..steam-community-card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s ease forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.steam-community-card:hover {
+  transform: translateY(-6px);
+  border-color: #ff4d4d;
+  box-shadow: 0 10px 25px rgba(255, 77, 77, 0.3);
+}
+
+/* 🔹 Encabezado con banner */
+.steam-card-header {
+  position: relative;
+  height: 140px;
+  background: #222;
+  overflow: hidden;
+}
+
+.steam-card-banner {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.steam-community-card:hover .steam-card-banner {
+  filter: brightness(1);
+  transform: scale(1.05);
+}
+
+/* 🔹 Logo o ícono sobre el banner */
+.steam-card-logo {
+  position: absolute;
+  bottom: -18px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 1.6rem;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(6px);
+}
+
+/* 🔹 Cuerpo del card */
+.steam-card-body {
+  padding: 1.5rem 1.2rem 1rem;
+}
+
+.steam-card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.3rem;
+}
+
+.steam-card-subtitle {
+  color: #ff4d4d;
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+}
+
+.steam-card-description {
+  font-size: 0.95rem;
+  color: #ccc;
+  line-height: 1.4;
+  height: 60px;
+  overflow: hidden;
+}
+
+/* 🔹 Stats y etiquetas */
+.steam-card-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.steam-card-tags {
+  margin-top: 0.8rem;
+}
+
+.steam-tag {
+  display: inline-block;
+  background: #2b2b2b;
+  color: #f0f0f0;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  margin: 2px;
+  transition: all 0.2s ease;
+}
+
+.steam-tag:hover {
+  background: #ff4d4d;
+  color: #fff;
+}
+
+/* 🔹 Footer (botón + actividad) */
+.steam-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.2rem;
+  border-top: 1px solid #2b2b2b;
+  background: rgba(255,255,255,0.02);
+}
+
+.btn-steam-join {
+  border: 1px solid #ff4d4d;
+  background: transparent;
+  color: #ff4d4d;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.btn-steam-join:hover {
+  background: #ff4d4d;
+  color: #fff;
+}
+
+.btn-steam-join.joined {
+  background: #28a745;
+  border-color: #28a745;
+  color: #fff;
+}
+
+.steam-activity {
+  font-size: 0.85rem;
+  color: #aaa;
+  display: flex;
+  align-items: center;
+}
+
+.steam-online-dot {
+  width: 8px;
+  height: 8px;
+  background: #28a745;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
 /* Estadísticas de Usuario */
 .user-stats-card {
     background: rgba(28, 28, 28, 0.95);

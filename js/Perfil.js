@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (!currentUser) {
         console.error('No hay usuario logueado');
-        window.location.href = 'login.html';
+        window.location.href = 'Login.html';
         return;
     }
 
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
             reader.readAsDataURL(file);
         });
     }
-
+    
     // Sweet Alert - Editar perfil con selección de archivos
     document.getElementById("editProfileBtn").addEventListener("click", async () => {
         
