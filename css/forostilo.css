@@ -1,106 +1,693 @@
+/* Variables de colores - Mismo esquema consistente */
+:root {
+    --primary-bg: #121212;
+    --secondary-bg: #1f1f1f;
+    --accent-color: #ff4d4d;
+    --text-primary: #f0f0f0;
+    --text-secondary: #ccc;
+    --steam-blue: #66c0f4;
+    --steam-dark: #0f1923;
+}
+
+/* Estilos generales */
 body {
-    background-color: #121212; /* Fondo dark principal */
-    color: #ffffff; /* Texto claro */
-    font-family: 'Orbitron', sans-serif; /* Fuente gamer futurista */
-  }
-  
-  /* Navbar */
-  .navbar {
-    background-color: #1f1f1f !important;
-    box-shadow: 0 2px 10px rgba(0, 255, 200, 0.2);
-  }
-  .navbar-brand {
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    padding-top: 76px; /* Para navbar fijo */
+}
+
+/* Navbar mejorado - APLICADO */
+.navbar-dark.bg-dark {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--accent-color);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    color: var(--accent-color) !important;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+}
+
+.nav-link {
+    color: var(--text-primary) !important;
+    font-weight: 500;
+    margin: 0 5px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--accent-color) !important;
+    background: rgba(255, 77, 77, 0.1);
+    transform: translateY(-2px);
+}
+
+.btn-success {
+    background: var(--accent-color) !important;
+    border-color: var(--accent-color) !important;
+    border-radius: 25px;
     font-weight: bold;
-    color: #0dcaf0 !important;
-    text-shadow: 0 0 8px #0dcaf0;
-  }
-  .nav-link:hover {
-    color: #0dcaf0 !important;
-    text-shadow: 0 0 6px #0dcaf0;
-  }
-  
-  /* Cards */
-  .card {
-    background-color: #1e1e1e;
-    border: 1px solid #333;
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    background: #ff3333 !important;
+    border-color: #ff3333 !important;
+    transform: scale(1.05);
+}
+
+/* Banner del carrusel mejorado */
+.carousel-item {
+    position: relative;
+}
+
+.carousel-item img {
+    height: 500px;
+    object-fit: cover;
+    filter: brightness(0.7);
+}
+
+.banner-caption {
+    position: absolute;
+    bottom: 20%;
+    left: 10%;
+    text-align: left;
+    animation: fadeInUp 1s ease;
+}
+
+.banner-caption h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
     margin-bottom: 1rem;
-    border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .card:hover {
-    transform: translateY(-5px) scale(1.03);
-    box-shadow: 0 0 20px rgba(0, 255, 200, 0.5);
-  }
-  .card-img-top {
-    height: 150px;
-    object-fit: cover;  /* Esto recorta si es necesario */
-    width: 100%;        /* Asegura que ocupe todo el ancho */
-    border-radius: 10px 10px 0 0;
-  }
-  
-  /* Headers de categorías */
-  .category-header {
-    background: linear-gradient(90deg, #007bff, #00c6ff);
-    color: white;
-    padding: 0.6rem;
-    border-radius: 6px 6px 0 0;
-    font-weight: bold;
-    text-shadow: 0 0 6px #00c6ff;
-  }
-  
-  /* Links de subforos */
-  .subforum-link {
-    color: #00c6ff;
-    text-decoration: none;
-    transition: color 0.3s, text-shadow 0.3s;
-  }
-  .subforum-link:hover {
-    color: #0dcaf0;
-    text-shadow: 0 0 10px #0dcaf0;
-    text-decoration: underline;
-  }
-  
-  /* Sección principal */
-  .content-section {
-    background-color: #1e1e1e;
-    padding: 1rem;
-    border-radius: 10px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.banner-caption p {
+    font-size: 1.3rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    margin-bottom: 2rem;
+}
+
+.banner-caption .btn {
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    animation: fadeInUp 1s ease 0.6s both;
+}
+
+.banner-caption .btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* Secciones de contenido */
+.content-section {
+    background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
     border: 1px solid #333;
-    animation: fadeIn 1.2s ease-in-out;
-  }
-  .content-section h2 {
-    text-shadow: 0 0 8px #00c6ff;
-  }
-  
-  /* Banner captions */
-  .banner-caption {
-    background: rgba(0, 0, 0, 0.6);
-    padding: 20px;
-    border-radius: 10px;
-  }
-  
-  /* Footer */
-  footer {
-    background-color: #1f1f1f;
-    color: #ccc;
-    border-top: 1px solid #333;
-  }
-  footer a {
-    color: #00c6ff;
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.content-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,77,77,0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.content-section:hover::before {
+    left: 100%;
+}
+
+.content-section:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 15px 35px rgba(255,77,77,0.2);
+}
+
+.category-header {
+    color: var(--accent-color);
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+/* Listas y enlaces */
+.list-group-item.bg-dark {
+    background: linear-gradient(145deg, #2a2a2a, #1e1e1e) !important;
+    border-color: #444 !important;
+    transition: all 0.3s ease;
+}
+
+.list-group-item.bg-dark:hover {
+    background: linear-gradient(145deg, #333, #242424) !important;
+    transform: translateX(5px);
+}
+
+.subforum-link {
+    color: var(--text-primary);
     text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.subforum-link:hover {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+/* Cards en el aside */
+.card {
+    background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
+    border: 1px solid #333;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,77,77,0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.card:hover::before {
+    left: 100%;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-color);
+    box-shadow: 0 15px 35px rgba(255,77,77,0.2);
+}
+
+.card-img-top {
+    height: 150px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+.card-title .subforum-link {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.card-text {
+    color: var(--text-secondary) !important;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+    padding: 2rem 0;
+    border-top: 2px solid var(--accent-color);
+    margin-top: 4rem;
+}
+
+/* Controles del carrusel */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    padding: 20px;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Aplicar animaciones a elementos específicos */
+.carousel-item {
+    animation: fadeIn 1s ease;
+}
+
+.content-section {
+    animation: fadeInUp 0.6s ease-out both;
+}
+
+.card {
+    animation: fadeInUp 0.6s ease-out both;
+}
+
+/* Retrasos escalonados para las secciones */
+.content-section:nth-child(1) { animation-delay: 0.1s; }
+.content-section:nth-child(2) { animation-delay: 0.2s; }
+.content-section:nth-child(3) { animation-delay: 0.3s; }
+
+.card:nth-child(1) { animation-delay: 0.4s; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .banner-caption h2 {
+        font-size: 2rem;
+    }
+    
+    .banner-caption p {
+        font-size: 1rem;
+    }
+    
+    .carousel-item img {
+        height: 300px;
+    }
+    
+    .banner-caption {
+        bottom: 10%;
+        left: 5%;
+    }
+    
+    .content-section {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+    
+    .banner-caption h2 {
+        font-size: 1.5rem;
+    }
+    
+    .banner-caption .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Mejoras de scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Efectos de focus para accesibilidad */
+.subforum-link:focus,
+.nav-link:focus,
+.btn:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Loading states */
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Badges personalizados */
+.badge-custom {
+    background: var(--accent-color);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* === MANTENIENDO TODOS LOS ESTILOS ORIGINALES DEL CSS PARA CONSISTENCIA === */
+
+/* Hero section mejorada */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('../img/1082409.png') no-repeat center center;
+    background-size: cover;
+    color: white;
+    padding: 120px 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255,77,77,0.1), rgba(102,192,244,0.1));
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+    margin-bottom: 1.5rem;
+    position: relative;
+    animation: fadeInUp 1s ease;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    margin-bottom: 2rem;
+    animation: fadeInUp 1s ease 0.3s both;
+}
+
+.btn-hero {
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    animation: fadeInUp 1s ease 0.6s both;
+}
+
+.btn-hero:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* Secciones */
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+
+/* Cards de foros mejorados */
+.forum-card {
+    background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
+    border: 1px solid #333;
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.forum-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,77,77,0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.forum-card:hover::before {
+    left: 100%;
+}
+
+.forum-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-color);
+    box-shadow: 0 15px 35px rgba(255,77,77,0.2);
+}
+
+.forum-icon {
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.forum-card h4 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.forum-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.forum-badge {
+    background: var(--accent-color);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* Container de reviews con animación */
+.reviews-container {
+    position: relative;
+    min-height: 400px;
+    overflow: hidden;
+}
+
+.review-item {
+    background: linear-gradient(135deg, #2a2a2a, #1f1f1f);
+    border: 1px solid #333;
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 1rem 0;
+    transition: all 0.5s ease;
+    opacity: 0;
+    transform: translateX(50px);
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.review-item.active {
+    opacity: 1;
+    transform: translateX(0);
+    position: relative;
+}
+
+.review-card {
+    background: linear-gradient(145deg, #2d2d2d, #222222);
+    border: 1px solid rgba(102, 192, 244, 0.3);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.review-card:hover {
+    border-color: var(--steam-blue);
+    box-shadow: 0 10px 30px rgba(102, 192, 244, 0.2);
+    transform: translateY(-5px);
+}
+
+.review-card img {
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.review-card:hover img {
+    transform: scale(1.05);
+}
+
+.review-card h4 {
+    color: var(--steam-blue);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.review-card .fst-italic {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    border-left: 3px solid var(--accent-color);
+    padding-left: 1rem;
+    margin: 1rem 0;
+}
+
+.review-rating {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.review-user {
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Footer mejorado */
+.custom-footer {
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+    padding: 2rem 0;
+    border-top: 2px solid var(--accent-color);
+    margin-top: 4rem;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.social-link {
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+/* Animación de transición entre reviews */
+@keyframes slideReview {
+    0% {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    10% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    90% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+}
+
+.review-item.active {
+    animation: slideReview 5s ease-in-out;
+}
+
+/* Efectos de scroll suave */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-title {
+      font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.1rem;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+    }
+}
+
+/*Estilo de notificacion*/  
+.notificaciones-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 2000;
+}
+
+.notificacion {
+  background: rgba(28,28,28,0.95);
+  border-left: 4px solid #66c0f4;
+  padding: 10px 16px;
+  border-radius: 6px;
+  margin-top: 10px;
+  color: #f0f0f0;
+  min-width: 250px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  animation: slideIn 0.3s ease, fadeOut 0.5s ease 2.5s forwards;
+}
+
+.notificacion.success { border-left-color: #28a745; }
+.notificacion.info { border-left-color: #17a2b8; }
+.notificacion.error { border-left-color: #dc3545; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; transform: translateX(50px); }
+}
+
+/* Animación principal de carga*/
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(30px);
   }
-  footer a:hover {
-    color: #0dcaf0;
-    text-shadow: 0 0 8px #0dcaf0;
+  to {
+      opacity: 1;
+      transform: translateY(0);
   }
-  
-  /* Animaciones */
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  .carousel-item img {
-    height: 400px;       /* Ajusta la altura que quieras (ej: 350-450px) */
-    object-fit: cover;   /* Recorta lo que sobre en lugar de deformar */
-  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Aplicar a elementos */
+.hero {
+  animation: fadeInUp 1s ease-out;
+}
+
+.container {
+  animation: fadeIn 0.8s ease-out 0.3s both;
+}
+
+/* Y todos los demás estilos del CSS original se mantienen para consistencia total... */

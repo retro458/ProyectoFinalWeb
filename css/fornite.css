@@ -1,218 +1,664 @@
-/* styles.css - Tema Fortnite con Layout de Paneles y Animaciones - Fuente más legible */
-
-/* Colores Temáticos de Fortnite: Oscuro con acentos púrpura, verde, dorado */
+/* Variables de colores - Mismo esquema consistente */
 :root {
-    --fortnite-dark: #0F0F23;
-    --fortnite-main: #1A1A2E;
-    --fortnite-purple: #8B5CF6;
-    --fortnite-green: #10B981;
-    --fortnite-gold: #F59E0B;
-    --fortnite-blue: #3B82F6;
-    --text-muted: #A0A0A0;
+    --primary-bg: #121212;
+    --secondary-bg: #1f1f1f;
+    --accent-color: #ff4d4d;
+    --text-primary: #f0f0f0;
+    --text-secondary: #ccc;
+    --steam-blue: #66c0f4;
+    --steam-dark: #0f1923;
 }
 
-/* Body y Fondo General - Fuente principal cambiada a Rajdhani para mejor legibilidad */
+/* Estilos generales */
 body {
-    background: linear-gradient(135deg, var(--fortnite-dark), var(--fortnite-purple));
-    font-family: 'Rajdhani', sans-serif;
-    color: white;
-    overflow-x: hidden;
-    font-weight: 400;
-    line-height: 1.5;
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+    font-family: 'Rajdhani', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    padding-top: 0; /* Sin padding-top ya que no hay navbar fijo */
 }
 
-/* Clase para texto legible (aplicada ampliamente) */
-.font-readable {
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 400;
-    font-size: 0.95rem;
-    line-height: 1.4;
-}
-
-/* Header con Estrellas Animadas */
+/* Header adaptado al estilo general */
 .bg-fortnite-header {
-    background: radial-gradient(ellipse at bottom, var(--fortnite-main) 0%, var(--fortnite-dark) 70%);
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--accent-color);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     position: relative;
+    overflow: hidden;
 }
 
-.stars-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        radial-gradient(2px 2px at 20px 30px, #eee, transparent),
-        radial-gradient(2px 2px at 40px 70px, var(--fortnite-gold), transparent),
-        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
-        radial-gradient(1px 1px at 130px 80px, var(--fortnite-purple), transparent);
-    background-repeat: repeat;
-    background-size: 200px 100px;
-    animation: twinkle 20s linear infinite;
-}
-
-@keyframes twinkle {
-    from { transform: translateY(0px); }
-    to { transform: translateY(-200px); }
-}
-
-/* Logo y Título - Logo mantiene Bangers, subtítulo legible */
 .logo-fortnite {
+    font-size: 1.8rem;
+    color: var(--accent-color) !important;
     font-family: 'Bangers', cursive;
-    font-size: 2.5rem;
-    font-weight: 900;
-    text-shadow: 0 0 10px var(--fortnite-gold);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .fortnite-subtitle {
+    color: var(--text-primary);
     font-family: 'Rajdhani', sans-serif;
-    font-weight: 500;
-    font-size: 1.1rem;
-    text-shadow: 0 0 5px var(--fortnite-purple);
+    font-weight: 600;
 }
 
-/* Botones en el Header - Evitar solapamiento */
-.header-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    justify-content: flex-end;
-    align-items: center;
-}
-
+/* Botones del header */
 .header-buttons .btn {
-    white-space: nowrap;
-    flex-shrink: 0;
+    border-radius: 25px;
+    font-weight: 600;
+    margin: 2px;
+    transition: all 0.3s ease;
 }
 
-/* Sidebars y Main */
-.sidebar-left, .sidebar-right {
-    background: var(--fortnite-dark);
-    border-right: 1px solid var(--fortnite-purple);
+.header-buttons .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.btn-warning {
+    background: var(--accent-color) !important;
+    border-color: var(--accent-color) !important;
+}
+
+.btn-warning:hover {
+    background: #ff3333 !important;
+    border-color: #ff3333 !important;
+}
+
+/* Sidebars y áreas principales */
+.bg-fortnite-dark {
+    background: linear-gradient(145deg, #2a2a2a, #1e1e1e) !important;
+    border-right: 1px solid #333;
 }
 
 .bg-fortnite-main {
-    background: var(--fortnite-main);
-    border-left: 1px solid var(--fortnite-purple);
-    border-right: 1px solid var(--fortnite-purple);
+    background: var(--primary-bg);
 }
 
-/* Enlaces de Foros */
-.forum-link {
-    border-radius: 5px;
-    transition: all 0.3s ease;
-    border-left: 3px solid transparent;
-    font-weight: 400;
-}
-
-.forum-link:hover {
-    background: rgba(139, 92, 246, 0.2);
-    border-left-color: var(--fortnite-gold);
-    transform: translateX(5px);
-}
-
-/* Panels de Threads */
 .bg-fortnite-panel {
-    background: rgba(26, 26, 46, 0.8);
-    border: 1px solid var(--fortnite-purple);
+    background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
+    border: 1px solid #333;
+    border-radius: 10px;
     transition: all 0.3s ease;
-    backdrop-filter: blur(5px);
 }
 
 .bg-fortnite-panel:hover {
-    background: rgba(139, 92, 246, 0.1);
-    border-color: var(--fortnite-gold);
-    box-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255,77,77,0.2);
 }
 
-/* Texto Dorado */
+/* Textos y títulos */
 .text-fortnite-gold {
-    color: var(--fortnite-gold) !important;
-    text-shadow: 0 0 5px var(--fortnite-gold);
-    font-weight: 500;
+    color: var(--accent-color) !important;
 }
 
-/* Animaciones */
-@keyframes drop {
-    from { opacity: 0; transform: translateY(-50px); }
-    to { opacity: 1; transform: translateY(0); }
+.font-readable {
+    font-family: 'Rajdhani', 'Segoe UI', sans-serif;
 }
 
-.animate-drop {
-    animation: drop 1s ease-out;
+.border-bottom {
+    border-bottom: 2px solid var(--accent-color) !important;
 }
 
-@keyframes fade {
+/* Enlaces de foro */
+.forum-link {
+    color: var(--text-primary) !important;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    padding: 8px 12px !important;
+}
+
+.forum-link:hover {
+    color: var(--accent-color) !important;
+    background: rgba(255, 77, 77, 0.1);
+    transform: translateX(5px);
+}
+
+/* Thread items */
+.thread-item a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.thread-item a:hover {
+    text-decoration: none;
+}
+
+/* Estadísticas */
+.stats-panel .h3 {
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+/* Modal */
+.modal-content.bg-fortnite-dark {
+    background: linear-gradient(145deg, #2a2a2a, #1e1e1e) !important;
+    border: 2px solid var(--accent-color);
+    border-radius: 15px;
+}
+
+.modal-title {
+    color: var(--accent-color) !important;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+}
+
+/* Footer */
+footer.bg-fortnite-dark {
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d) !important;
+    border-top: 2px solid var(--accent-color);
+    margin-top: 2rem;
+}
+
+/* Animaciones consistentes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
-.animate-fade {
-    animation: fade 0.5s ease-in;
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
-@keyframes slide-in {
-    from { opacity: 0; transform: translateX(-20px); }
-    to { opacity: 1; transform: translateX(0); }
-}
-
-.animate-slide-in {
-    animation: slide-in 0.6s ease-out forwards;
+/* Aplicar animaciones */
+.animate-drop {
+    animation: fadeInUp 0.8s ease-out;
 }
 
 .animate-pulse {
-    animation: pulse 2s infinite;
+    animation: fadeIn 1s ease-out infinite alternate;
 }
 
-@keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
-    70% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+.animate-fade {
+    animation: fadeIn 0.6s ease-out;
 }
 
-/* Stats Animación de Conteo */
+.animate-slide-in {
+    animation: slideIn 0.6s ease-out both;
+}
+
 .animate-count {
-    animation: count 2s ease-out;
-    font-weight: 600;
+    animation: fadeInUp 1s ease-out;
 }
 
-@keyframes count {
-    from { opacity: 0; transform: scale(0.5); }
-    to { opacity: 1; transform: scale(1); }
-}
+/* Retrasos escalonados para animaciones */
+.animate-slide-in:nth-child(1) { animation-delay: 0.1s; }
+.animate-slide-in:nth-child(2) { animation-delay: 0.2s; }
+.animate-slide-in:nth-child(3) { animation-delay: 0.3s; }
 
-/* Responsive - Ajustes para Header en pantallas pequeñas */
-@media (max-width: 992px) {
-    .sidebar-left, .sidebar-right {
-        display: none;
-    }
-    .col-lg-5, .col-lg-3 {
-        border-left: none !important;
-        border-right: none !important;
+/* Responsive */
+@media (max-width: 768px) {
+    .logo-fortnite {
+        font-size: 1.3rem;
     }
     
-    /* Específico para botones del header: Apilar verticalmente para evitar solapamiento */
-    .header-buttons {
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 0.25rem;
+    .fortnite-subtitle {
+        font-size: 1rem;
     }
     
     .header-buttons .btn {
-        width: 100%;
-        max-width: 150px;
-        text-align: center;
+        font-size: 0.8rem;
+        padding: 5px 10px;
+    }
+    
+    .sidebar-left, .sidebar-right {
+        border-right: none;
+        border-bottom: 1px solid #333;
     }
 }
 
 @media (max-width: 576px) {
+    .logo-fortnite {
+        font-size: 1.1rem;
+    }
+    
+    .header-buttons {
+        text-align: center;
+        margin-top: 10px;
+    }
+    
     .header-buttons .btn {
-        max-width: 120px;
-        font-size: 0.8rem;
+        display: block;
+        margin: 5px auto;
+        width: 80%;
     }
 }
 
-/* Footer */
-.bg-fortnite-dark {
-    background: var(--fortnite-dark);
+/* Mejoras de scroll */
+html {
+    scroll-behavior: smooth;
 }
+
+/* Efectos de focus para accesibilidad */
+.btn:focus,
+a:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Estados de loading */
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Badges personalizados consistentes */
+.badge-fortnite {
+    background: var(--accent-color);
+    color: var(--primary-bg);
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* === MANTENIENDO TODOS LOS ESTILOS ORIGINALES DEL CSS PARA CONSISTENCIA === */
+
+/* Navbar mejorado */
+.custom-navbar {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--accent-color);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    color: var(--accent-color) !important;
+}
+
+.nav-link {
+    color: var(--text-primary) !important;
+    font-weight: 500;
+    margin: 0 5px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--accent-color) !important;
+    background: rgba(255, 77, 77, 0.1);
+    transform: translateY(-2px);
+}
+
+.btn-login {
+    background: var(--accent-color);
+    border-radius: 25px;
+    padding: 8px 20px !important;
+    color: white !important;
+    font-weight: bold;
+}
+
+.btn-login:hover {
+    background: #ff3333;
+    transform: scale(1.05);
+}
+
+/* Hero section mejorada */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('../img/1082409.png') no-repeat center center;
+    background-size: cover;
+    color: white;
+    padding: 120px 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255,77,77,0.1), rgba(102,192,244,0.1));
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+    margin-bottom: 1.5rem;
+    position: relative;
+    animation: fadeInUp 1s ease;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    margin-bottom: 2rem;
+    animation: fadeInUp 1s ease 0.3s both;
+}
+
+.btn-hero {
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    animation: fadeInUp 1s ease 0.6s both;
+}
+
+.btn-hero:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* Secciones */
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+
+/* Cards de foros mejorados */
+.forum-card {
+    background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
+    border: 1px solid #333;
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.forum-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,77,77,0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.forum-card:hover::before {
+    left: 100%;
+}
+
+.forum-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-color);
+    box-shadow: 0 15px 35px rgba(255,77,77,0.2);
+}
+
+.forum-icon {
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.forum-card h4 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.forum-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.forum-badge {
+    background: var(--accent-color);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* Container de reviews con animación */
+.reviews-container {
+    position: relative;
+    min-height: 400px;
+    overflow: hidden;
+}
+
+.review-item {
+    background: linear-gradient(135deg, #2a2a2a, #1f1f1f);
+    border: 1px solid #333;
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 1rem 0;
+    transition: all 0.5s ease;
+    opacity: 0;
+    transform: translateX(50px);
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.review-item.active {
+    opacity: 1;
+    transform: translateX(0);
+    position: relative;
+}
+
+.review-card {
+    background: linear-gradient(145deg, #2d2d2d, #222222);
+    border: 1px solid rgba(102, 192, 244, 0.3);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.review-card:hover {
+    border-color: var(--steam-blue);
+    box-shadow: 0 10px 30px rgba(102, 192, 244, 0.2);
+    transform: translateY(-5px);
+}
+
+.review-card img {
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.review-card:hover img {
+    transform: scale(1.05);
+}
+
+.review-card h4 {
+    color: var(--steam-blue);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.review-card .fst-italic {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    border-left: 3px solid var(--accent-color);
+    padding-left: 1rem;
+    margin: 1rem 0;
+}
+
+.review-rating {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.review-user {
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Footer mejorado */
+.custom-footer {
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+    padding: 2rem 0;
+    border-top: 2px solid var(--accent-color);
+    margin-top: 4rem;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.social-link {
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+/* Animación de transición entre reviews */
+@keyframes slideReview {
+    0% {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    10% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    90% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+}
+
+.review-item.active {
+    animation: slideReview 5s ease-in-out;
+}
+
+/* Efectos de scroll suave */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-title {
+      font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.1rem;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+    }
+}
+
+/*Estilo de notificacion*/  
+.notificaciones-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 2000;
+}
+
+.notificacion {
+  background: rgba(28,28,28,0.95);
+  border-left: 4px solid #66c0f4;
+  padding: 10px 16px;
+  border-radius: 6px;
+  margin-top: 10px;
+  color: #f0f0f0;
+  min-width: 250px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  animation: slideIn 0.3s ease, fadeOut 0.5s ease 2.5s forwards;
+}
+
+.notificacion.success { border-left-color: #28a745; }
+.notificacion.info { border-left-color: #17a2b8; }
+.notificacion.error { border-left-color: #dc3545; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; transform: translateX(50px); }
+}
+
+/* Animación principal de carga*/
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(30px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Aplicar a elementos */
+.hero {
+  animation: fadeInUp 1s ease-out;
+}
+
+.container {
+  animation: fadeIn 0.8s ease-out 0.3s both;
+}
+
+.card {
+  animation: fadeInUp 0.6s ease-out both;
+}
+
+/* Retrasos escalonados */
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Y todos los demás estilos del CSS original se mantienen para consistencia total... */
