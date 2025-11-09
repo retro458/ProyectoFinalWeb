@@ -162,7 +162,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Refrescar datos en pantalla
             document.getElementById("username").textContent = currentUser.name;
-            
+      
+
             if(currentUser.avatar){
                 document.getElementById("avatar").src = currentUser.avatar;
             }
