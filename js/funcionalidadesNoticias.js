@@ -1,4 +1,4 @@
-// funcionalidadesNoticias.js - VERSIÓN COMPLETA CORREGIDA AL FIN HIJUESUPTMR AAAAAAAAAA
+// funcionalidadesNoticias.js - VERSIÓN COMPLETA CORREGIDA AL FIN AAAAAAAAAA
 
 AOS.init();
 
@@ -67,7 +67,7 @@ function renderizarNoticias() {
                         <h5 class="card-title">${noticia.titulo}</h5>
                         <p class="card-text flex-grow-1">${noticia.descripcionCorta}</p>
                         <div class="mt-auto">
-                            <small class="text-muted">
+                            <small class="text-muted-info">
                                 <i class="fas fa-calendar me-1"></i>${new Date(noticia.fecha).toLocaleDateString('es-ES')}
                             </small>
                             <a href="../html/detalle-noticia.html?id=${noticia.id}" class="btn btn-outline-danger btn-sm float-end">

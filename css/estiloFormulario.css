@@ -200,7 +200,7 @@ body {
 }
 
 .ql-editor .embed-container::before {
-    content: "🔄 Contenido Embebido";
+    content: "Contenido Embebido";
     display: block;
     font-weight: bold;
     color: #495057;

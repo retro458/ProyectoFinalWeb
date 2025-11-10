@@ -2,8 +2,9 @@
     background: linear-gradient(135deg, #1a1a1a 0%, #2d1b1b 100%);
     background: url('../img/627796.jpg') no-repeat center center;
     background-size: cover;
-    padding: 80px 0 40px;
+    padding: 120px 0 40px;
     position: relative;
+    margin-top: 76px; /* Para compensar navbar fijo */
 }
 
 .hero-noticias::before {
@@ -19,6 +20,58 @@
 .hero-noticias .container {
     position: relative;
     z-index: 1;
+}
+
+/* Variables de colores */
+:root {
+    --primary-bg: #121212;
+    --secondary-bg: ;
+    --accent-color: #ff4d4d;
+    --text-primary: #f0f0f0;
+    --text-secondary: #ccc;
+    --steam-blue: #66c0f4;
+    --steam-dark: #0f1923;
+}
+
+/* Navbar*/
+.custom-navbar {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--accent-color);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    color: var(--accent-color) !important;
+}
+
+.nav-link {
+    color: var(--text-primary) !important;
+    font-weight: 500;
+    margin: 0 5px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--accent-color) !important;
+    background: rgba(255, 77, 77, 0.1);
+    transform: translateY(-2px);
+}
+
+.btn-login {
+    background: var(--accent-color);
+    border-radius: 25px;
+    padding: 8px 20px !important;
+    color: white !important;
+    font-weight: bold;
+}
+
+.btn-login:hover {
+    background: #ff3333;
+    transform: scale(1.05);
 }
 
 .news-card {
@@ -94,7 +147,7 @@
     background: linear-gradient(45deg, #dc3545, #c82333) !important;
 }
 
-/* Paginación - ESTILOS MEJORADOS */
+/* Paginación*/
 #paginacionContainer {
     margin-top: 2rem;
     padding: 1rem 0;
@@ -186,10 +239,114 @@
     animation: fadeInUp 0.8s ease-out;
 }
 
+/*MODO OSCURO*/
+body {
+    background-color: #121212;
+    color: #f0f0f0;
+}
+
+/* Hero con fondo oscuro */
+.hero-noticias {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('../img/627796.jpg') no-repeat center center;
+    background-size: cover;
+    color: #f0f0f0;
+}
+
+/* Tarjetas y contenedores */
+.card, .sidebar-card, .bg-light, .pagination-info, #infoResultados {
+    background: #1f1f1f !important;
+    color: #f0f0f0 !important;
+    border-color: #333 !important;
+}
+
+/* Borde y sombras suaves */
+.sidebar-card {
+    border-left: 4px solid #ff4d4d;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+/* Paginación oscura */
+.pagination .page-link {
+    background: #1f1f1f !important;
+    color: #ff4d4d !important;
+    border: 1px solid #333 !important;
+}
+.pagination .page-link:hover,
+.pagination .page-item.active .page-link {
+    background: #ff4d4d !important;
+    color: #fff !important;
+    border-color: #ff4d4d !important;
+}
+
+/* Newsletter oscura */
+.card.bg-danger.text-white {
+    background: linear-gradient(135deg, #8b0000, #ff4d4d);
+}
+
+/* Detalle de noticia */
+.lead.mb-4.p-3.bg-light.rounded {
+    background: rgba(255,255,255,0.05) !important;
+    border-left: 4px solid #ff4d4d;
+}
+
+/* Inputs oscuros */
+.form-control {
+    background: #2a2a2a;
+    color: #fff;
+    border: 1px solid #444;
+}
+.form-control::placeholder {
+    color: #aaa;
+}
+
+/* Footer oscuro consistente */
+footer {
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+    border-top: 2px solid #ff4d4d;
+    color: #f0f0f0;
+}
+
+/*Arreglos para "Populares" (modo oscuro)*/
+.sidebar-card { background: #1f1f1f !important; }
+
+.sidebar-card .card-body { background: transparent !important; }
+
+/* Lista y elementos en oscuro */
+#noticiasPopulares.list-group,
+#noticiasPopulares .list-group-item {
+  background: #1f1f1f !important;
+  color: #f0f0f0 !important;
+}
+
+/* Bordes discretos y hover */
+#noticiasPopulares .list-group-item {
+  border: 1px solid #333 !important;
+  border-radius: 8px !important;
+  margin-bottom: 10px;
+  padding: 12px 14px;
+}
+
+#noticiasPopulares .list-group-item:hover {
+  background: #262626 !important;
+  border-color: #444 !important;
+}
+
+#noticiasPopulares.list-group-flush > .list-group-item {
+  border-width: 1px !important;
+}
+
+/* Placeholders de “no hay noticias” también en oscuro */
+#noticiasPopulares .text-muted,
+#noticiasPopulares .fa-newspaper{
+  color: #bbb !important;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .hero-noticias {
-        padding: 60px 0 30px;
+        padding: 100px 0 30px;
+        margin-top: 76px;
     }
     
     .hero-noticias h1 {

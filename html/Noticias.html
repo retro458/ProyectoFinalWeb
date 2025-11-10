@@ -11,29 +11,40 @@
 </head>
 <body>
     <!-- Navegación -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
         <div class="container">
-            <a class="navbar-brand" href="Index.html">
-                <i class="fas fa-gamepad me-2"></i>Comunidad Gamer
-            </a>
-            <div class="navbar-nav ms-auto">
-                <script>
-                    const sesionGuardada = localStorage.getItem('adminSesion');
-                    if (sesionGuardada) {
-                        const sesion = JSON.parse(sesionGuardada);
-                        const ahora = new Date().getTime();
-                        if (ahora - sesion.timestamp < sesion.expira) {
-                            document.write(`
-                                <a class="nav-link" href="formulario-noticias.html">
-                                    <i class="fas fa-cog me-1"></i>Administrar Noticias
-                                </a>
-                            `);
+            <a class="navbar-brand fw-bold" href="Index.html">🎮 GameZone</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../html/Index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#noticias">Noticias</a></li>
+                    <li class="nav-item"><a class="nav-link" href="principalforo.html">Foros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Comunidades.html">Comunidades</a></li>
+                    <script>
+                        const sesionGuardada = localStorage.getItem('adminSesion');
+                        if (sesionGuardada) {
+                            const sesion = JSON.parse(sesionGuardada);
+                            const ahora = new Date().getTime();
+                            if (ahora - sesion.timestamp < sesion.expira) {
+                                document.write(`
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="formulario-noticias.html">
+                                            <i class="fas fa-cog me-1"></i>Administrar Noticias
+                                        </a>
+                                    </li>
+                                `);
+                            }
                         }
-                    }
-                </script>
-                <a class="nav-link" href="LoginAdmin.html">
-                    <i class="fas fa-sign-in-alt me-1"></i>Login Admin
-                </a>
+                    </script>
+                    <li class="nav-item">
+                        <a class="nav-link btn-login" href="LoginAdmin.html">
+                            <i class="fas fa-sign-in-alt me-1"></i>Login Admin
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>

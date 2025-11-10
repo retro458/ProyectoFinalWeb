@@ -11,7 +11,7 @@
         .embed-container {
             margin: 1.5rem 0;
             padding: 1rem;
-            background: #f8f9fa;
+            background: #1f1f1f;
             border-radius: 8px;
             border-left: 4px solid #dc3545;
         }
@@ -50,27 +50,19 @@
 </head>
 <body>
     <!-- Navegación -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
         <div class="container">
-            <a class="navbar-brand" href="../html/Index.html">
-                <i class="fas fa-gamepad me-2"></i>Comunidad Gamer
-            </a>
-            <div class="navbar-nav ms-auto">
-                <a class="nav-link" href="Noticias.html">Volver a Noticias</a>
-                <script>
-                    const sesionGuardada = localStorage.getItem('adminSesion');
-                    if (sesionGuardada) {
-                        const sesion = JSON.parse(sesionGuardada);
-                        const ahora = new Date().getTime();
-                        if (ahora - sesion.timestamp < sesion.expira) {
-                            document.write(`
-                                <a class="nav-link" href="formulario-noticias.html">
-                                    <i class="fas fa-cog me-1"></i>Administrar
-                                </a>
-                            `);
-                        }
-                    }
-                </script>
+            <a class="navbar-brand fw-bold" href="../html/Index.html">🎮 GameZone</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../html/Index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="Noticias.html">Noticias</a></li>
+                    <li class="nav-item"><a class="nav-link" href="principalforo.html">Foros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Comunidades.html">Comunidades</a></li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -131,13 +123,8 @@
             const contenedor = document.getElementById('detalleNoticia');
             
             contenedor.innerHTML = `
-                <nav aria-label="breadcrumb" class="mb-4">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="../html/Index.html">Inicio</a></li>
-                        <li class="breadcrumb-item"><a href="Noticias.html">Noticias</a></li>
-                        <li class="breadcrumb-item active">${escapeHtml(noticia.titulo)}</li>
-                    </ol>
-                </nav>
+
+                <br><br>
 
                 <div class="mb-4">
                     <img src="${noticia.imagen}" class="img-fluid rounded w-100" alt="${escapeHtml(noticia.titulo)}" 
@@ -148,7 +135,7 @@
                 <header class="mb-4">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <span class="badge-categoria">${escapeHtml(noticia.categoria)}</span>
-                        <small class="text-muted">
+                        <small class="text-muted-info">
                             <i class="fas fa-calendar me-1"></i>${new Date(noticia.fecha).toLocaleDateString('es-ES', { 
                                 year: 'numeric', 
                                 month: 'long', 
@@ -160,8 +147,8 @@
                     <h1 class="display-5 fw-bold mb-3">${escapeHtml(noticia.titulo)}</h1>
                     
                     <div class="d-flex align-items-center mb-4">
-                        <i class="fas fa-user me-2 text-muted"></i>
-                        <span class="text-muted">Por: <strong>${escapeHtml(noticia.autor)}</strong></span>
+                        <i class="fas fa-user me-2 text-muted-info"></i>
+                        <span class="text-muted-info">Por: <strong>${escapeHtml(noticia.autor)}</strong></span>
                     </div>
                 </header>
 
@@ -177,7 +164,7 @@
                 <footer class="border-top pt-4">
                     <div class="row">
                         <div class="col-md-6">
-                            <small class="text-muted">
+                            <small class="text-muted-info">
                                 <i class="fas fa-clock me-1"></i>
                                 Publicado el: ${new Date(noticia.fechaCreacion).toLocaleDateString('es-ES')}
                             </small>
